@@ -9,6 +9,10 @@ const CURRICULUM = [
         week: 1,
         title: "The Key of C",
         description: "The foundation - all white keys on piano, open position on guitar",
+        weeklyChallenge: {
+            guitar: "Play the C Major scale up and down, then play C Major chord (open) and C Major (A Shape barre) cleanly, 3 times each.",
+            piano: "Play C Major scale hands together at 60 BPM, then play C Major chord in all 3 inversions smoothly."
+        },
         guitar: {
             scale: {
                 name: "C Major Scale (Open Position)",
@@ -55,6 +59,10 @@ const CURRICULUM = [
         week: 2,
         title: "The Key of G",
         description: "One sharp (F#) - essential for both instruments",
+        weeklyChallenge: {
+            guitar: "Play G Major scale, then C Major scale (Week 1 recap). Play G and C Major chords, switching between them 4 times smoothly.",
+            piano: "Play G Major scale hands together at 60 BPM, then C Major scale (recap). Play G-C-G chord progression using inversions."
+        },
         guitar: {
             scale: {
                 name: "G Major Scale (Open Position)",
@@ -101,6 +109,10 @@ const CURRICULUM = [
         week: 3,
         title: "The Key of D",
         description: "Two sharps (F#, C#) - builds on what you know",
+        weeklyChallenge: {
+            guitar: "Play D, G, and C Major scales in sequence. Play D-G-C chord progression, 4 bars each, with smooth transitions.",
+            piano: "Play D Major scale at 70 BPM, then G and C scales (recap). Play D-G-C progression choosing the best inversions for smooth movement."
+        },
         guitar: {
             scale: {
                 name: "D Major Scale (Open Position)",
@@ -146,6 +158,10 @@ const CURRICULUM = [
         week: 4,
         title: "Review & The I-IV-V",
         description: "Master C-G-D together - the most common chord progression",
+        weeklyChallenge: {
+            guitar: "Play the I-IV-V progression in C (C-F-G), G (G-C-D), and D (D-G-A) - pick any chord voicing you've learned. Demonstrate smooth changes at 70 BPM.",
+            piano: "Play C-G-D progression with a steady beat, using inversions. Then play the same progression starting on G (G-D-A). Show you understand the pattern!"
+        },
         guitar: {
             scale: {
                 name: "C-G-D Chord Transitions",
@@ -183,6 +199,10 @@ const CURRICULUM = [
         week: 5,
         title: "A Minor - Relative to C",
         description: "Same notes as C major, different mood",
+        weeklyChallenge: {
+            guitar: "Play A Minor scale, then C Major scale - notice they use the same notes! Play Am-C-G-Am progression. Recap: Play one barre chord from weeks 1-4.",
+            piano: "Play A Minor and C Major scales back-to-back. Play Am-F-C-G progression using inversions. Show the connection between relative major/minor."
+        },
         guitar: {
             scale: {
                 name: "A Minor Scale (Natural)",
@@ -229,6 +249,10 @@ const CURRICULUM = [
         week: 6,
         title: "E Minor - Relative to G",
         description: "The easiest minor on guitar, beautiful on piano",
+        weeklyChallenge: {
+            guitar: "Play Em and G Major scales. Play Em-G-C-D progression. Recap: Play Am (week 5) and demonstrate how the Em shape becomes the Am barre.",
+            piano: "Play E Minor scale at 70 BPM, then G Major. Play Em-Am-D-G progression with smooth inversions. Recap: Play any 2 scales from weeks 1-5."
+        },
         guitar: {
             scale: {
                 name: "E Minor Scale (Natural)",
@@ -274,6 +298,10 @@ const CURRICULUM = [
         week: 7,
         title: "The Key of A Major",
         description: "Three sharps - great guitar key",
+        weeklyChallenge: {
+            guitar: "Play A Major scale, then A Minor scale - spot the 3 different notes! Play A-D-E progression (the classic rock progression). Recap: Play G and C barre chords.",
+            piano: "Play A Major at 70 BPM. Play A-D-E-A progression. Recap: Play C, G, and D Major scales from memory, plus Am and Em."
+        },
         guitar: {
             scale: {
                 name: "A Major Scale (Open Position)",
@@ -320,6 +348,10 @@ const CURRICULUM = [
         week: 8,
         title: "The Key of E Major",
         description: "Four sharps - the rock and blues foundation",
+        weeklyChallenge: {
+            guitar: "Play E Major scale. Play E-A-B progression (12-bar blues foundation). Recap: Play 3 different barre chord shapes you've learned, name the CAGED shape for each.",
+            piano: "Play E Major scale at 70 BPM. Play E-A-B-E progression. Recap: Play all Major scales learned so far (C, G, D, A, E) - can you do them without looking?"
+        },
         guitar: {
             scale: {
                 name: "E Major Scale (Open Position)",
@@ -368,6 +400,10 @@ const CURRICULUM = [
         week: 9,
         title: "The Key of F Major",
         description: "One flat (Bb) - introduces the F barre chord on guitar",
+        weeklyChallenge: {
+            guitar: "Play F Major scale. Master the F barre chord - hold it for 10 seconds with all strings ringing clearly! Play F-C-G-F progression. Recap: Name and play 4 different CAGED shapes.",
+            piano: "Play F Major scale at 72 BPM - watch that Bb! Play F-Bb-C-F progression. Recap: Play C, G, D, A, E Major scales and their relative minors."
+        },
         guitar: {
             scale: {
                 name: "F Major Scale",
@@ -415,6 +451,10 @@ const CURRICULUM = [
         week: 10,
         title: "D Minor - Relative to F",
         description: "A moody, expressive key",
+        weeklyChallenge: {
+            guitar: "Play D Minor and F Major scales. Play Dm-Am-Em-Dm progression (circle of minor keys). Recap: Dad picks 3 random chords from weeks 1-9 - play them!",
+            piano: "Play D Minor scale at 72 BPM. Play Dm-Gm-C-F progression. Recap: Play all minor scales (Am, Em, Dm) and their relative majors back-to-back."
+        },
         guitar: {
             scale: {
                 name: "D Minor Scale (Natural)",
@@ -461,6 +501,10 @@ const CURRICULUM = [
         week: 11,
         title: "Pentatonic Scales",
         description: "The most versatile scales for improvisation",
+        weeklyChallenge: {
+            guitar: "Play A Minor Pentatonic boxes 1 and 2, connecting them. Improvise a short solo over Am-G-F-E! Recap: Dad picks a random key - play its Major scale and barre chord.",
+            piano: "Play C Major Pentatonic and A Minor Pentatonic. Improvise a melody using only pentatonic notes over a C-Am-F-G backing. Recap: Play 5 scales of Dad's choice."
+        },
         guitar: {
             scale: {
                 name: "A Minor Pentatonic (Box 1)",
@@ -504,6 +548,10 @@ const CURRICULUM = [
         week: 12,
         title: "7th Chords & The Blues",
         description: "Add color with dominant and major 7th chords",
+        weeklyChallenge: {
+            guitar: "FINAL CHALLENGE: Play the 12-bar blues in A (A7-D7-E7). Play Blues scale over it. Then: Dad picks ANY 5 chords and ANY 3 scales from the entire course - play them all!",
+            piano: "FINAL CHALLENGE: Play Blues scale in C. Play Cmaj7-Am7-Dm7-G7 progression (jazz turnaround). Then: Dad picks ANY 5 chords and ANY 3 scales from the entire course!"
+        },
         guitar: {
             scale: {
                 name: "Blues Scale (A)",

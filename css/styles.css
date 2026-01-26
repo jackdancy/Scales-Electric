@@ -537,13 +537,99 @@ main {
     border-left: 3px solid var(--guitar-color);
 }
 
-.piano-player .scale-section {
+#piano-player .scale-section {
     border-left-color: var(--piano-color);
 }
 
 /* Chords section accent */
 .chords-section h4::before {
     background: var(--token-color);
+}
+
+/* Weekly Challenge Section */
+.weekly-challenge {
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(231, 76, 60, 0.1));
+    border: 2px solid var(--token-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.weekly-challenge.approved {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(39, 174, 96, 0.1));
+    border-color: var(--success);
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.challenge-header h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--token-color);
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.challenge-header h4::before {
+    display: none;
+}
+
+.weekly-challenge.approved .challenge-header h4 {
+    color: var(--success);
+}
+
+.approved-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--success);
+    background: rgba(46, 204, 113, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+.challenge-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.approve-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--token-color);
+    border-radius: 25px;
+    background: transparent;
+    color: var(--token-color);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.approve-btn:hover {
+    background: var(--token-color);
+    color: var(--bg-dark);
+}
+
+.approve-btn.approved {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.approve-btn.approved:hover {
+    background: transparent;
+    color: var(--success);
 }
 
 /* Embedded Diagrams Section */

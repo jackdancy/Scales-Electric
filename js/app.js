@@ -19,19 +19,21 @@ let state = {
     guitar: {
         name: 'Emile',
         tokens: 0,
-        completed: {},
+        completed: {},  // Self-tracked progress
+        approvedWeeks: [],  // Weeks approved by Dad [1, 2, 3, ...]
         notes: {},  // { "week-1-scale": "My note here", ... }
         practiceTime: {}, // { "week-1": 300, ... } in seconds per week
         achievements: [],
         barreCount: 0,
         scaleCount: 0,
         cagedShapes: new Set(),
-        weeksCompleted: 0
+        weeksCompleted: 0  // Calculated from approvedWeeks
     },
     piano: {
         name: 'Nestor',
         tokens: 0,
-        completed: {},
+        completed: {},  // Self-tracked progress
+        approvedWeeks: [],  // Weeks approved by Dad
         notes: {},
         practiceTime: {},
         achievements: [],
@@ -39,7 +41,7 @@ let state = {
         handsTogetherCount: 0,
         inversionSets: 0,
         blackKeyScales: 0,
-        weeksCompleted: 0
+        weeksCompleted: 0  // Calculated from approvedWeeks
     },
     currentWeek: 1,
     startDate: null,
@@ -84,6 +86,12 @@ function loadState() {
         if (!state.piano.practiceTime) state.piano.practiceTime = {};
         if (!state.guitar.notes) state.guitar.notes = {};
         if (!state.piano.notes) state.piano.notes = {};
+        // Ensure approvedWeeks arrays exist
+        if (!state.guitar.approvedWeeks) state.guitar.approvedWeeks = [];
+        if (!state.piano.approvedWeeks) state.piano.approvedWeeks = [];
+        // Update weeksCompleted from approvedWeeks
+        state.guitar.weeksCompleted = state.guitar.approvedWeeks.length;
+        state.piano.weeksCompleted = state.piano.approvedWeeks.length;
 
         // Resume active timer if page was reloaded
         if (state.activePracticeTimer) {
@@ -513,6 +521,34 @@ function toggleItem(player, weekNum, type, index, tokens) {
     cycleItemProgress(player, weekNum, type, index, tokens);
 }
 
+// Toggle week approval (Dad approves when player passes the weekly challenge)
+function toggleWeekApproval(player, weekNum) {
+    if (!state[player].approvedWeeks) {
+        state[player].approvedWeeks = [];
+    }
+
+    const index = state[player].approvedWeeks.indexOf(weekNum);
+    if (index === -1) {
+        // Approve the week
+        state[player].approvedWeeks.push(weekNum);
+        state[player].approvedWeeks.sort((a, b) => a - b);
+    } else {
+        // Unapprove the week
+        state[player].approvedWeeks.splice(index, 1);
+    }
+
+    // Update weeksCompleted count
+    state[player].weeksCompleted = state[player].approvedWeeks.length;
+
+    saveState();
+    render();
+}
+
+// Check if a week is approved
+function isWeekApproved(player, weekNum) {
+    return state[player].approvedWeeks?.includes(weekNum) || false;
+}
+
 // Check for newly earned achievements
 function checkNewAchievements(player) {
     const achievements = ACHIEVEMENTS[player];
@@ -768,6 +804,22 @@ function renderWeekContent(player) {
         `;
     }
 
+    // Weekly challenge
+    const weeklyChallenge = week.weeklyChallenge?.[player] || '';
+    const isApproved = isWeekApproved(player, weekNum);
+    const challengeSection = weeklyChallenge ? `
+        <div class="weekly-challenge ${isApproved ? 'approved' : ''}">
+            <div class="challenge-header">
+                <h4>Weekly Challenge</h4>
+                ${isApproved ? '<span class="approved-badge">✓ PASSED</span>' : ''}
+            </div>
+            <p class="challenge-description">${weeklyChallenge}</p>
+            <button class="approve-btn ${isApproved ? 'approved' : ''}" data-player="${player}" data-week="${weekNum}">
+                ${isApproved ? '✓ Week Approved' : 'Dad: Mark as Complete'}
+            </button>
+        </div>
+    ` : '';
+
     const container = document.getElementById(`${player}-week-content`);
     container.innerHTML = `
         <div class="week-header-info">
@@ -797,6 +849,7 @@ function renderWeekContent(player) {
                 <div class="chord-list"></div>
             </div>
         </div>
+        ${challengeSection}
     `;
 
     // Add scale item
@@ -862,6 +915,16 @@ function renderWeekContent(player) {
             if (confirm('Reset practice time for this week?')) {
                 resetWeekPracticeTime(player, weekNum);
             }
+        });
+    }
+
+    // Setup approve button
+    const approveBtn = container.querySelector('.approve-btn');
+    if (approveBtn) {
+        approveBtn.addEventListener('click', () => {
+            const p = approveBtn.dataset.player;
+            const w = parseInt(approveBtn.dataset.week);
+            toggleWeekApproval(p, w);
         });
     }
 }
