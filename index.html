@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scales Electric - 12 Week Music Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Scales Electric</h1>
+        <p class="tagline">12-Week Challenge: Learn Scales. Earn Tokens. Win Prizes!</p>
+        <div class="week-navigator">
+            <button id="prev-week" class="nav-btn">&larr;</button>
+            <span class="current-week">Week <span id="current-week-num">1</span> of 12</span>
+            <button id="next-week" class="nav-btn">&rarr;</button>
+        </div>
+
+        <!-- 12-Week Progress Bar -->
+        <div class="journey-progress">
+            <div class="journey-bar" id="journey-bar">
+                <!-- 12 week segments rendered by JS -->
+            </div>
+            <div class="journey-labels">
+                <span>Week 1</span>
+                <span>Week 12</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="players-container">
+            <!-- Guitar Player - Emile -->
+            <div class="player-card" id="guitar-player">
+                <div class="player-header guitar">
+                    <h2 class="player-name" contenteditable="true" data-player="guitar">Emile</h2>
+                    <span class="instrument-icon">🎸</span>
+                </div>
+                <div class="token-display">
+                    <span class="token-icon">⚡</span>
+                    <span class="token-count" id="guitar-tokens">0</span>
+                    <span class="token-label">tokens</span>
+                </div>
+                <div class="achievements-bar" id="guitar-achievements">
+                    <!-- Achievement badges rendered by JS -->
+                </div>
+                <div class="week-content-area" id="guitar-week-content">
+                    <!-- Current week content rendered by JS -->
+                </div>
+                <div class="embedded-diagrams" id="guitar-diagrams">
+                    <!-- Embedded diagrams rendered by JS -->
+                </div>
+            </div>
+
+            <!-- Piano Player - Nestor -->
+            <div class="player-card" id="piano-player">
+                <div class="player-header piano">
+                    <h2 class="player-name" contenteditable="true" data-player="piano">Nestor</h2>
+                    <span class="instrument-icon">🎹</span>
+                </div>
+                <div class="token-display">
+                    <span class="token-icon">⚡</span>
+                    <span class="token-count" id="piano-tokens">0</span>
+                    <span class="token-label">tokens</span>
+                </div>
+                <div class="achievements-bar" id="piano-achievements">
+                    <!-- Achievement badges rendered by JS -->
+                </div>
+                <div class="week-content-area" id="piano-week-content">
+                    <!-- Current week content rendered by JS -->
+                </div>
+                <div class="embedded-diagrams" id="piano-diagrams">
+                    <!-- Embedded diagrams rendered by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section class="prizes-section">
+            <h2>Prize Shop</h2>
+            <div class="prizes-container" id="prizes-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Keep practicing! The steering wheel awaits! 🏎️</p>
+    </footer>
+
+    <script src="js/curriculum.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/diagrams.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

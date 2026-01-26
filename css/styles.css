@@ -1,0 +1,1705 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --guitar-color: #e74c3c;
+    --guitar-light: #ff6b5b;
+    --piano-color: #3498db;
+    --piano-light: #5dade2;
+    --token-color: #f1c40f;
+    --bg-dark: #0d0d14;
+    --bg-card: #12121f;
+    --bg-week: #1a1a2e;
+    --bg-section: #0f0f1a;
+    --text-light: #f0f0f0;
+    --text-muted: #888;
+    --success: #2ecc71;
+    --border-glow: rgba(255, 255, 255, 0.08);
+    --section-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #0a0a15 100%);
+    min-height: 100vh;
+    color: var(--text-light);
+}
+
+header {
+    text-align: center;
+    padding: 2rem 2rem 1.5rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+    border-bottom: 1px solid var(--section-border);
+    margin-bottom: 0.5rem;
+}
+
+header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 4px;
+    color: transparent;
+    background: linear-gradient(90deg, var(--guitar-color), #ff9500, var(--piano-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 40px rgba(231, 76, 60, 0.4);
+    text-transform: uppercase;
+}
+
+.tagline {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Week Navigator */
+.week-navigator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--section-border);
+    border-radius: 50%;
+    background: var(--bg-section);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--token-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.2);
+}
+
+.current-week {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--token-color);
+}
+
+/* 12-Week Journey Progress Bar */
+.journey-progress {
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    padding: 0 1rem;
+}
+
+.journey-bar {
+    display: flex;
+    gap: 4px;
+    height: 44px;
+    background: var(--bg-section);
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid var(--section-border);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.week-segment {
+    flex: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.week-segment:hover {
+    transform: scaleY(1.1);
+}
+
+.week-segment.current {
+    box-shadow: 0 0 0 2px var(--token-color);
+}
+
+.week-segment .segment-half {
+    flex: 1;
+    transition: background 0.3s ease;
+}
+
+.week-segment .segment-half.guitar {
+    border-radius: 4px 4px 0 0;
+    background: rgba(231, 76, 60, 0.2);
+}
+
+.week-segment .segment-half.piano {
+    border-radius: 0 0 4px 4px;
+    background: rgba(52, 152, 219, 0.2);
+}
+
+/* Completion states */
+.week-segment .segment-half.guitar.complete {
+    background: var(--guitar-color);
+}
+
+.week-segment .segment-half.guitar.partial {
+    background: linear-gradient(90deg,
+        var(--guitar-color) 0%,
+        var(--guitar-color) var(--aced-progress),
+        var(--token-color) var(--aced-progress),
+        var(--token-color) var(--progress),
+        rgba(231, 76, 60, 0.2) var(--progress));
+}
+
+.week-segment .segment-half.piano.complete {
+    background: var(--piano-color);
+}
+
+.week-segment .segment-half.piano.partial {
+    background: linear-gradient(90deg,
+        var(--piano-color) 0%,
+        var(--piano-color) var(--aced-progress),
+        var(--token-color) var(--aced-progress),
+        var(--token-color) var(--progress),
+        rgba(52, 152, 219, 0.2) var(--progress));
+}
+
+/* Locked state */
+.week-segment.locked .segment-half {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Week number tooltip */
+.week-segment::after {
+    content: attr(data-week);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+.week-segment.current::after {
+    color: var(--token-color);
+}
+
+.journey-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.players-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.player-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--section-border);
+}
+
+.player-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-header.guitar {
+    background: linear-gradient(135deg, var(--guitar-color), var(--guitar-light));
+}
+
+.player-header.piano {
+    background: linear-gradient(135deg, var(--piano-color), var(--piano-light));
+}
+
+.player-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    outline: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+    text-transform: uppercase;
+}
+
+.player-name:hover,
+.player-name:focus {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.instrument-icon {
+    font-size: 2.5rem;
+}
+
+.token-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 100%);
+    border-bottom: 1px solid var(--section-border);
+}
+
+.token-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.token-count {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--token-color);
+    text-shadow: 0 0 25px rgba(241, 196, 15, 0.4);
+    transition: transform 0.2s ease;
+    letter-spacing: 2px;
+}
+
+.token-label {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Week Content Area - Single Week View */
+.week-content-area {
+    padding: 1.25rem;
+}
+
+.week-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--section-border);
+}
+
+.week-header-info .week-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.week-header-info .week-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.week-header-info .week-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+.week-description {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    font-style: italic;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--section-border);
+}
+
+/* Progress Ring */
+.progress-ring {
+    position: relative;
+    width: 54px;
+    height: 54px;
+}
+
+.progress-ring svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: var(--section-border);
+    stroke-width: 3;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke: var(--success);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+/* Week Items */
+.week-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.week-section {
+    background: var(--bg-section);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--section-border);
+}
+
+.week-items h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--section-border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.week-items h4::before {
+    content: '';
+    width: 4px;
+    height: 1rem;
+    background: linear-gradient(180deg, var(--guitar-color), var(--piano-color));
+    border-radius: 2px;
+}
+
+.week-items h4:first-child {
+    margin-top: 0;
+}
+
+/* Scale section accent */
+.scale-section {
+    border-left: 3px solid var(--guitar-color);
+}
+
+.piano-player .scale-section {
+    border-left-color: var(--piano-color);
+}
+
+/* Chords section accent */
+.chords-section h4::before {
+    background: var(--token-color);
+}
+
+/* Embedded Diagrams Section */
+.embedded-diagrams {
+    padding: 1.25rem;
+    border-top: 2px solid var(--section-border);
+    background: linear-gradient(180deg, var(--bg-section) 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.embedded-diagrams h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--section-border);
+}
+
+.embedded-diagrams h4 .click-hint {
+    font-family: 'Outfit', sans-serif;
+    text-transform: none;
+    font-weight: normal;
+    font-size: 0.65rem;
+    color: rgba(155, 89, 182, 0.7);
+    letter-spacing: 0;
+}
+
+.diagrams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.diagram-card {
+    background: var(--bg-week);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--section-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.diagram-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(155, 89, 182, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.15);
+}
+
+.diagram-card:active {
+    transform: scale(0.98) translateY(0);
+}
+
+.diagram-card.playing {
+    border-color: rgba(155, 89, 182, 0.8);
+    box-shadow: 0 0 25px rgba(155, 89, 182, 0.4);
+}
+
+.diagram-card h5 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.diagram-card h5 .play-hint {
+    display: inline-block;
+    color: rgba(155, 89, 182, 0.6);
+    font-size: 0.65rem;
+    margin-right: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.diagram-card:hover h5 .play-hint {
+    color: rgba(155, 89, 182, 1);
+}
+
+.diagram-card.playing h5 .play-hint {
+    color: #9b59b6;
+}
+
+.diagram-card svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.diagram-card .guitar-diagram {
+    width: 120px;
+}
+
+.diagram-card .guitar-scale-diagram {
+    width: 100%;
+    max-width: 220px;
+}
+
+.diagram-card .piano-diagram {
+    width: 100%;
+    max-width: 280px;
+}
+
+.diagram-card .fingering-info {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.diagram-card .hand-info {
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+}
+
+.diagram-card .hand-info strong {
+    color: var(--text-light);
+}
+
+.diagram-card .hand-info sup {
+    color: var(--piano-light);
+    font-weight: bold;
+}
+
+.diagram-card .fingering-tip {
+    font-size: 0.6rem;
+    color: var(--token-color);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hand legend for piano scales */
+.hand-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.65rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-muted);
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-item.rh .legend-dot {
+    background: #27ae60;
+}
+
+.legend-item.lh .legend-dot {
+    background: #e74c3c;
+}
+
+/* Piano scale diagram - larger for better visibility */
+.diagram-card .piano-scale-diagram {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Tip boxes - collapsible style */
+.tip-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 2px solid var(--token-color);
+    padding: 0.4rem 0.6rem;
+    margin: 0.25rem 0 0.5rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.tip-box:hover {
+    opacity: 1;
+    color: var(--text-light);
+    background: rgba(241, 196, 15, 0.08);
+}
+
+.tip-box.small {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.5rem;
+    margin: 0.15rem 0 0.4rem;
+}
+
+.tip-box.barre-tip {
+    border-left-color: var(--guitar-color);
+}
+
+.tip-box.barre-tip:hover {
+    background: rgba(231, 76, 60, 0.08);
+}
+
+.tip-icon {
+    margin-right: 0.4rem;
+    font-size: 0.8em;
+}
+
+/* Difficulty badges */
+.item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.item-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.difficulty-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.difficulty-badge.difficulty-1 {
+    background: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+}
+
+.difficulty-badge.difficulty-2 {
+    background: rgba(241, 196, 15, 0.2);
+    color: var(--token-color);
+}
+
+.difficulty-badge.difficulty-3 {
+    background: rgba(231, 76, 60, 0.2);
+    color: var(--guitar-color);
+}
+
+.caged-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 10px;
+    background: rgba(52, 152, 219, 0.2);
+    color: var(--piano-light);
+}
+
+.barre-badge {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 10px;
+    background: rgba(231, 76, 60, 0.3);
+    color: #ff6b5b;
+    font-weight: bold;
+}
+
+/* Pattern info */
+.pattern-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+}
+
+.pattern-label {
+    color: var(--text-muted);
+}
+
+.pattern-name {
+    color: var(--piano-light);
+    background: rgba(52, 152, 219, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+}
+
+/* Metronome */
+.metronome-section {
+    background: var(--bg-section);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--section-border);
+    border-left: 3px solid var(--piano-color);
+}
+
+.metronome-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--section-border);
+}
+
+.metronome-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+.speed-goal {
+    font-size: 0.75rem;
+    color: var(--success);
+    font-weight: bold;
+}
+
+.metronome-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.bpm-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--section-border);
+    border-radius: 50%;
+    background: var(--bg-section);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bpm-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--piano-light);
+}
+
+.bpm-display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--piano-light);
+    min-width: 90px;
+    text-align: center;
+}
+
+.metronome-toggle {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: var(--piano-color);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 0.5rem;
+}
+
+.metronome-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+}
+
+.metronome-toggle.playing {
+    background: var(--guitar-color);
+    animation: pulse 0.5s ease infinite;
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
+}
+
+/* Achievement popup */
+.achievement-popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.achievement-popup.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.achievement-popup.guitar {
+    border: 2px solid var(--guitar-color);
+}
+
+.achievement-popup.piano {
+    border: 2px solid var(--piano-color);
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+}
+
+.achievement-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.achievement-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    color: var(--token-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.achievement-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+/* Achievements bar */
+.achievements-bar {
+    padding: 0.75rem 1rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+    border-bottom: 1px solid var(--section-border);
+}
+
+.achievements-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.achievement-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.achievement-badge.earned {
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.3), rgba(231, 76, 60, 0.3));
+    border: 2px solid var(--token-color);
+}
+
+.achievement-badge.locked {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.4;
+}
+
+.achievement-badge.locked .badge-icon {
+    filter: grayscale(100%);
+}
+
+.achievement-badge:hover {
+    transform: scale(1.2);
+}
+
+.badge-icon {
+    font-size: 1rem;
+}
+
+/* Practice Timer */
+.practice-timer-section {
+    background: var(--bg-section);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--section-border);
+    border-left: 3px solid var(--success);
+}
+
+.practice-timer-section.goal-reached {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: var(--success);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.15);
+}
+
+.timer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--section-border);
+}
+
+.timer-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+.timer-goal {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.timer-goal.complete {
+    color: var(--success);
+    font-weight: bold;
+}
+
+.timer-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.timer-progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.timer-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success), #58d68d);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.timer-current {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--success);
+    min-width: 50px;
+}
+
+.timer-separator {
+    color: var(--text-muted);
+}
+
+.timer-target {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.timer-controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.timer-btn {
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 20px;
+    background: var(--success);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.timer-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+}
+
+.timer-btn.active {
+    background: var(--guitar-color);
+    animation: pulse 1s ease infinite;
+}
+
+.timer-reset-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--section-border);
+    border-radius: 50%;
+    background: var(--bg-section);
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.timer-reset-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    border-color: var(--text-muted);
+}
+
+/* Notes Button */
+.notes-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--section-border);
+    border-radius: 50%;
+    background: var(--bg-section);
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.notes-btn:hover {
+    transform: scale(1.1);
+    background: rgba(241, 196, 15, 0.2);
+    border-color: var(--token-color);
+}
+
+.notes-btn.has-note {
+    background: rgba(241, 196, 15, 0.2);
+    border-color: var(--token-color);
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.2);
+}
+
+/* Note preview on checklist items */
+.note-preview {
+    font-size: 0.7rem;
+    color: var(--token-color);
+    background: rgba(241, 196, 15, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    margin-top: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+/* Notes Modal */
+.notes-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.notes-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.notes-modal-content {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 450px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--section-border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.notes-modal.show .notes-modal-content {
+    transform: scale(1);
+}
+
+.notes-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.notes-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.notes-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding-right: 2rem;
+    color: var(--text-light);
+}
+
+.emoji-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.emoji-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emoji-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.2);
+}
+
+.notes-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.notes-textarea:focus {
+    outline: none;
+    border-color: var(--token-color);
+}
+
+.notes-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.notes-save-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--success), #27ae60);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.notes-save-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px rgba(46, 204, 113, 0.3);
+}
+
+/* Checklist Items */
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+    border: 1px solid transparent;
+}
+
+.checklist-item:last-child {
+    margin-bottom: 0;
+}
+
+.checklist-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--section-border);
+}
+
+/* Progress states */
+.checklist-item.in-progress {
+    background: rgba(241, 196, 15, 0.08);
+    border-color: rgba(241, 196, 15, 0.2);
+}
+
+.checklist-item.aced {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: rgba(46, 204, 113, 0.2);
+}
+
+/* Progress indicator (replaces checkbox) */
+.progress-indicator {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.progress-indicator:hover {
+    transform: scale(1.1);
+}
+
+.checklist-item.not-started .progress-indicator {
+    background: transparent;
+    border-color: var(--text-muted);
+}
+
+.checklist-item.in-progress .progress-indicator {
+    background: var(--token-color);
+    border-color: var(--token-color);
+}
+
+.checklist-item.in-progress .progress-icon {
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+.checklist-item.aced .progress-indicator {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.checklist-item.aced .progress-icon {
+    color: white;
+    font-weight: bold;
+}
+
+/* Progress label badge */
+.progress-label {
+    font-size: 0.55rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+.progress-label.not-started {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+}
+
+.progress-label.in-progress {
+    background: rgba(241, 196, 15, 0.3);
+    color: var(--token-color);
+}
+
+.progress-label.aced {
+    background: rgba(46, 204, 113, 0.3);
+    color: var(--success);
+}
+
+/* Token display when earned */
+.item-tokens.earned {
+    color: var(--success);
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.item-name {
+    flex-grow: 1;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.item-tokens {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--token-color);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Item Buttons */
+.item-buttons {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.show-btn {
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: var(--bg-section);
+    border: 1px solid var(--section-border);
+    color: #1abc9c;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.show-btn:hover {
+    transform: scale(1.1);
+    background: #1abc9c;
+    color: white;
+    box-shadow: 0 0 12px rgba(26, 188, 156, 0.4);
+}
+
+.play-btn {
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: var(--bg-section);
+    border: 1px solid var(--section-border);
+    color: #9b59b6;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+    background: #9b59b6;
+    color: white;
+    box-shadow: 0 0 12px rgba(155, 89, 182, 0.4);
+}
+
+.play-btn.playing {
+    animation: play-pulse 0.5s ease;
+}
+
+@keyframes play-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(155, 89, 182, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(155, 89, 182, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(155, 89, 182, 0); }
+}
+
+/* Diagram Modal */
+.diagram-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.diagram-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.diagram-content {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--section-border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.diagram-modal.show .diagram-content {
+    transform: scale(1);
+}
+
+.diagram-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.diagram-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.diagram-title {
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--text-light);
+}
+
+.diagram-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.diagram-container svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.guitar-diagram {
+    width: 180px;
+}
+
+.guitar-scale-diagram {
+    width: 100%;
+    max-width: 350px;
+}
+
+.piano-diagram {
+    width: 100%;
+    max-width: 400px;
+}
+
+.diagram-notes {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.piano-fingering,
+.scale-notes {
+    margin-bottom: 0.75rem;
+    color: var(--text-light);
+}
+
+.finger-legend {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Prizes Section */
+.prizes-section {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--section-border);
+}
+
+.prizes-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--token-color), #ff9500);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.prizes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.prize-card {
+    background: var(--bg-section);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    border: 1px solid var(--section-border);
+}
+
+.prize-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.prize-card.unlocked {
+    border-color: var(--success);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);
+}
+
+.prize-card.ultimate {
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.15), rgba(231, 76, 60, 0.15));
+    border-color: var(--token-color);
+    box-shadow: 0 0 30px rgba(241, 196, 15, 0.15);
+}
+
+.prize-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.prize-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.prize-cost {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--token-color);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.prize-status {
+    margin-top: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.prize-status.locked {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+}
+
+.prize-status.available {
+    background: var(--success);
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--section-border);
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .players-container {
+        grid-template-columns: 1fr;
+    }
+
+    .diagrams-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .player-header {
+        padding: 1rem;
+    }
+
+    .player-name {
+        font-size: 1.2rem;
+    }
+
+    .token-count {
+        font-size: 2rem;
+    }
+
+    .week-header-info .week-title {
+        font-size: 1rem;
+    }
+
+    .item-name {
+        font-size: 0.8rem;
+    }
+
+    .journey-bar {
+        height: 30px;
+        gap: 2px;
+    }
+
+    .week-segment::after {
+        font-size: 0.5rem;
+    }
+
+    .diagram-card h5 {
+        font-size: 0.65rem;
+    }
+
+    .diagram-card .fingering-info {
+        font-size: 0.6rem;
+    }
+}
+
+/* Scrollbar styling */
+.player-card::-webkit-scrollbar {
+    width: 6px;
+}
+
+.player-card::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.player-card::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.player-card::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
