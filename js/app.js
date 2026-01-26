@@ -6,8 +6,6 @@ const PRIZES = [
     { name: 'Extra Screen Time (30 min)', icon: '📱', cost: 30 },
     { name: 'Choose Dinner', icon: '🍕', cost: 60 },
     { name: 'Movie Night Pick', icon: '🎬', cost: 100 },
-    { name: 'New Game (Budget)', icon: '🎮', cost: 200 },
-    { name: 'Day Trip Choice', icon: '🎢', cost: 350 },
     { name: 'PS5 Steering Wheel & Pedals', icon: '🏎️', cost: 500, ultimate: true }
 ];
 
