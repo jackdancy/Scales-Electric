@@ -11,8 +11,23 @@
 </head>
 <body>
     <header>
-        <h1>Scales Electric</h1>
-        <p class="tagline">12-Week Challenge: Learn Scales. Earn Tokens. Win Prizes!</p>
+        <div class="header-top">
+            <div class="player-score guitar-score">
+                <span class="score-name" id="guitar-name-display">Emile</span>
+                <span class="score-icon">🎸</span>
+                <span class="score-tokens"><span id="guitar-tokens-header">0</span>⚡</span>
+            </div>
+            <div class="header-center">
+                <h1>Scales Electric</h1>
+                <p class="tagline">12-Week Challenge: Learn Scales. Earn Tokens. Win Prizes!</p>
+            </div>
+            <div class="player-score piano-score">
+                <span class="score-tokens"><span id="piano-tokens-header">0</span>⚡</span>
+                <span class="score-icon">🎹</span>
+                <span class="score-name" id="piano-name-display">Nestor</span>
+            </div>
+        </div>
+
         <div class="week-navigator">
             <button id="prev-week" class="nav-btn">&larr;</button>
             <span class="current-week">Week <span id="current-week-num">1</span> of 12</span>
@@ -29,20 +44,27 @@
                 <span>Week 12</span>
             </div>
         </div>
+
+        <!-- Player Tabs -->
+        <div class="player-tabs">
+            <button class="player-tab active" data-player="guitar">
+                <span class="tab-icon">🎸</span>
+                <span class="tab-name">Emile</span>
+            </button>
+            <button class="player-tab" data-player="piano">
+                <span class="tab-icon">🎹</span>
+                <span class="tab-name">Nestor</span>
+            </button>
+        </div>
     </header>
 
     <main>
         <section class="players-container">
             <!-- Guitar Player - Emile -->
-            <div class="player-card" id="guitar-player">
+            <div class="player-card active" id="guitar-player" data-player="guitar">
                 <div class="player-header guitar">
                     <h2 class="player-name" contenteditable="true" data-player="guitar">Emile</h2>
                     <span class="instrument-icon">🎸</span>
-                </div>
-                <div class="token-display">
-                    <span class="token-icon">⚡</span>
-                    <span class="token-count" id="guitar-tokens">0</span>
-                    <span class="token-label">tokens</span>
                 </div>
                 <div class="achievements-bar" id="guitar-achievements">
                     <!-- Achievement badges rendered by JS -->
@@ -56,15 +78,10 @@
             </div>
 
             <!-- Piano Player - Nestor -->
-            <div class="player-card" id="piano-player">
+            <div class="player-card" id="piano-player" data-player="piano">
                 <div class="player-header piano">
                     <h2 class="player-name" contenteditable="true" data-player="piano">Nestor</h2>
                     <span class="instrument-icon">🎹</span>
-                </div>
-                <div class="token-display">
-                    <span class="token-icon">⚡</span>
-                    <span class="token-count" id="piano-tokens">0</span>
-                    <span class="token-label">tokens</span>
                 </div>
                 <div class="achievements-bar" id="piano-achievements">
                     <!-- Achievement badges rendered by JS -->

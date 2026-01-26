@@ -1565,9 +1565,15 @@ function render() {
     document.querySelector('#guitar-player .player-name').textContent = state.guitar.name;
     document.querySelector('#piano-player .player-name').textContent = state.piano.name;
 
-    // Update token counts
-    document.getElementById('guitar-tokens').textContent = state.guitar.tokens;
-    document.getElementById('piano-tokens').textContent = state.piano.tokens;
+    // Update header displays
+    document.getElementById('guitar-name-display').textContent = state.guitar.name;
+    document.getElementById('piano-name-display').textContent = state.piano.name;
+    document.getElementById('guitar-tokens-header').textContent = state.guitar.tokens;
+    document.getElementById('piano-tokens-header').textContent = state.piano.tokens;
+
+    // Update tab names
+    document.querySelector('.player-tab[data-player="guitar"] .tab-name').textContent = state.guitar.name;
+    document.querySelector('.player-tab[data-player="piano"] .tab-name').textContent = state.piano.name;
 
     // Update current week display
     document.getElementById('current-week-num').textContent = state.currentWeek;
@@ -1632,12 +1638,30 @@ function setupWeekNavigation() {
     });
 }
 
+// Tab switching
+function setupTabs() {
+    document.querySelectorAll('.player-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const player = tab.dataset.player;
+
+            // Update active tab
+            document.querySelectorAll('.player-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Update active player card
+            document.querySelectorAll('.player-card').forEach(card => card.classList.remove('active'));
+            document.getElementById(`${player}-player`).classList.add('active');
+        });
+    });
+}
+
 // Initialize
 function init() {
     loadState();
     render();
     setupNameEditing();
     setupWeekNavigation();
+    setupTabs();
 }
 
 // Save state before page unload (for practice timer)

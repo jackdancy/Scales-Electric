@@ -31,10 +31,114 @@ body {
 
 header {
     text-align: center;
-    padding: 2rem 2rem 1.5rem;
+    padding: 1.5rem 1rem 1rem;
     background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
     border-bottom: 1px solid var(--section-border);
     margin-bottom: 0.5rem;
+}
+
+/* Header Top with Scores */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto 1rem;
+    gap: 1rem;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.player-score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-section);
+    border-radius: 30px;
+    border: 1px solid var(--section-border);
+    min-width: 120px;
+}
+
+.player-score.guitar-score {
+    border-left: 3px solid var(--guitar-color);
+}
+
+.player-score.piano-score {
+    border-right: 3px solid var(--piano-color);
+}
+
+.score-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+.score-icon {
+    font-size: 1.2rem;
+}
+
+.score-tokens {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--token-color);
+    letter-spacing: 1px;
+}
+
+/* Player Tabs */
+.player-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.player-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 30px 30px 0 0;
+    background: var(--bg-section);
+    color: var(--text-muted);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--section-border);
+    border-bottom: none;
+}
+
+.player-tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+}
+
+.player-tab.active {
+    background: var(--bg-card);
+    color: var(--text-light);
+}
+
+.player-tab[data-player="guitar"].active {
+    border-top: 3px solid var(--guitar-color);
+}
+
+.player-tab[data-player="piano"].active {
+    border-top: 3px solid var(--piano-color);
+}
+
+.tab-icon {
+    font-size: 1.3rem;
+}
+
+.tab-name {
+    text-transform: uppercase;
 }
 
 header h1 {
@@ -213,13 +317,19 @@ main {
 }
 
 .players-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
 }
 
 .player-card {
+    display: none;
+}
+
+.player-card.active {
+    display: block;
+}
+
+.player-card[id] {
     background: var(--bg-card);
     border-radius: 16px;
     overflow: hidden;
@@ -1634,11 +1744,20 @@ footer {
 /* Responsive */
 @media (max-width: 900px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
-    .players-container {
-        grid-template-columns: 1fr;
+    .header-top {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .header-center {
+        order: -1;
+    }
+
+    .player-score {
+        min-width: auto;
     }
 
     .diagrams-grid {
@@ -1647,6 +1766,10 @@ footer {
 }
 
 @media (max-width: 500px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
     .player-header {
         padding: 1rem;
     }
@@ -1655,12 +1778,8 @@ footer {
         font-size: 1.2rem;
     }
 
-    .token-count {
-        font-size: 2rem;
-    }
-
     .week-header-info .week-title {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .item-name {
@@ -1682,6 +1801,19 @@ footer {
 
     .diagram-card .fingering-info {
         font-size: 0.6rem;
+    }
+
+    .player-tab {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+
+    .score-name {
+        font-size: 0.85rem;
+    }
+
+    .score-tokens {
+        font-size: 1rem;
     }
 }
 
