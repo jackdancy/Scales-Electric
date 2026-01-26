@@ -2,12 +2,17 @@
 // 12-Week Curriculum Version - Enhanced for Emile & Nestor
 
 // Prize configuration
-const PRIZES = [
-    { name: 'Extra Screen Time (30 min)', icon: '📱', cost: 30 },
-    { name: 'Choose Dinner', icon: '🍕', cost: 60 },
-    { name: 'Movie Night Pick', icon: '🎬', cost: 100 },
-    { name: 'PS5 Steering Wheel & Pedals', icon: '🏎️', cost: 500, ultimate: true }
+const PERSONAL_MILESTONES = [
+    { name: 'Screen Time (30 min)', icon: '📱', weeksRequired: 1, perWeek: true },
+    { name: 'Choose Dinner', icon: '🍕', weeksRequired: 2 },
+    { name: 'Movie Night Pick', icon: '🎬', weeksRequired: 3 },
 ];
+
+const JOINT_PRIZE = {
+    name: 'PS5 Steering Wheel & Pedals',
+    icon: '🏎️',
+    requirement: 'Both complete all 12 weeks'
+};
 
 // State
 let state = {
@@ -1457,24 +1462,63 @@ function createPianoKeyboardSVG(highlightNotes, fingers) {
     return svg;
 }
 
-// Create prize card HTML
-function createPrizeCard(prize) {
-    const guitarTokens = state.guitar.tokens;
-    const pianoTokens = state.piano.tokens;
-    const maxTokens = Math.max(guitarTokens, pianoTokens);
-    const isUnlocked = maxTokens >= prize.cost;
+// Create personal milestone card HTML
+function createPersonalMilestoneCard(milestone, player) {
+    const weeksComplete = state[player].weeksCompleted || 0;
+    const playerName = state[player].name;
+    const isGuitar = player === 'guitar';
+
+    if (milestone.perWeek) {
+        // Screen time - earned per week
+        const earned = weeksComplete;
+        const div = document.createElement('div');
+        div.className = `prize-card personal ${isGuitar ? 'guitar' : 'piano'} ${earned > 0 ? 'unlocked' : ''}`;
+        div.innerHTML = `
+            <div class="prize-icon">${milestone.icon}</div>
+            <div class="prize-name">${milestone.name}</div>
+            <div class="prize-player">${playerName}</div>
+            <div class="prize-status ${earned > 0 ? 'available' : 'locked'}">
+                ${earned > 0 ? `${earned}x earned` : 'Complete 1 week'}
+            </div>
+        `;
+        return div;
+    } else {
+        const isUnlocked = weeksComplete >= milestone.weeksRequired;
+        const div = document.createElement('div');
+        div.className = `prize-card personal ${isGuitar ? 'guitar' : 'piano'} ${isUnlocked ? 'unlocked' : ''}`;
+        div.innerHTML = `
+            <div class="prize-icon">${milestone.icon}</div>
+            <div class="prize-name">${milestone.name}</div>
+            <div class="prize-player">${playerName}</div>
+            <div class="prize-status ${isUnlocked ? 'available' : 'locked'}">
+                ${isUnlocked ? 'Unlocked!' : `${milestone.weeksRequired - weeksComplete} week${milestone.weeksRequired - weeksComplete !== 1 ? 's' : ''} to go`}
+            </div>
+        `;
+        return div;
+    }
+}
+
+// Create joint prize card HTML
+function createJointPrizeCard() {
+    const guitarComplete = state.guitar.weeksCompleted || 0;
+    const pianoComplete = state.piano.weeksCompleted || 0;
+    const bothComplete = guitarComplete >= 12 && pianoComplete >= 12;
+    const totalWeeks = guitarComplete + pianoComplete;
 
     const div = document.createElement('div');
-    div.className = `prize-card ${isUnlocked ? 'unlocked' : ''} ${prize.ultimate ? 'ultimate' : ''}`;
+    div.className = `prize-card ultimate ${bothComplete ? 'unlocked' : ''}`;
     div.innerHTML = `
-        <div class="prize-icon">${prize.icon}</div>
-        <div class="prize-name">${prize.name}</div>
-        <div class="prize-cost">${prize.cost} ⚡</div>
-        <div class="prize-status ${isUnlocked ? 'available' : 'locked'}">
-            ${isUnlocked ? 'Available!' : `${prize.cost - maxTokens} more to go`}
+        <div class="prize-icon">${JOINT_PRIZE.icon}</div>
+        <div class="prize-name">${JOINT_PRIZE.name}</div>
+        <div class="prize-requirement">Both complete all 12 weeks</div>
+        <div class="prize-progress">
+            <span class="guitar-progress">${state.guitar.name}: ${guitarComplete}/12</span>
+            <span class="piano-progress">${state.piano.name}: ${pianoComplete}/12</span>
+        </div>
+        <div class="prize-status ${bothComplete ? 'available' : 'locked'}">
+            ${bothComplete ? 'UNLOCKED!' : `${24 - totalWeeks} weeks to go`}
         </div>
     `;
-
     return div;
 }
 
@@ -1596,9 +1640,15 @@ function render() {
     // Render prizes
     const prizesContainer = document.getElementById('prizes-container');
     prizesContainer.innerHTML = '';
-    PRIZES.forEach(prize => {
-        prizesContainer.appendChild(createPrizeCard(prize));
+
+    // Personal milestones for each player
+    PERSONAL_MILESTONES.forEach(milestone => {
+        prizesContainer.appendChild(createPersonalMilestoneCard(milestone, 'guitar'));
+        prizesContainer.appendChild(createPersonalMilestoneCard(milestone, 'piano'));
     });
+
+    // Joint prize
+    prizesContainer.appendChild(createJointPrizeCard());
 }
 
 // Handle name editing
