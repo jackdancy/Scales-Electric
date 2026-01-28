@@ -546,6 +546,82 @@ main {
     background: var(--token-color);
 }
 
+/* Songs Section */
+.songs-section {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(142, 68, 173, 0.05));
+    border-left: 3px solid #9b59b6;
+    margin-top: 1.25rem;
+}
+
+.songs-section h4 {
+    color: #bb8fce;
+}
+
+.songs-section h4::before {
+    background: #9b59b6;
+}
+
+.songs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.song-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(155, 89, 182, 0.2);
+    transition: all 0.2s ease;
+}
+
+.song-item:hover {
+    background: rgba(155, 89, 182, 0.1);
+    border-color: rgba(155, 89, 182, 0.4);
+    transform: translateX(4px);
+}
+
+.song-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.song-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.song-artist {
+    font-size: 0.75rem;
+    color: #bb8fce;
+    font-style: italic;
+}
+
+.song-chords {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--token-color);
+    background: rgba(241, 196, 15, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+}
+
+.song-note {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(155, 89, 182, 0.3);
+}
+
 /* Weekly Challenge Section */
 .weekly-challenge {
     background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), rgba(231, 76, 60, 0.1));

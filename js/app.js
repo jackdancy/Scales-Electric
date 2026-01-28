@@ -817,6 +817,26 @@ function renderWeekContent(player) {
         `;
     }
 
+    // Songs for this week
+    const songs = week.songs?.[player] || [];
+    const songsSection = songs.length > 0 ? `
+        <div class="week-section songs-section">
+            <h4>Songs You Can Play Now!</h4>
+            <div class="songs-list">
+                ${songs.map(song => `
+                    <div class="song-item">
+                        <div class="song-header">
+                            <span class="song-title">${song.title}</span>
+                            <span class="song-artist">by ${song.artist}</span>
+                        </div>
+                        <div class="song-chords">${song.chords}</div>
+                        ${song.note ? `<div class="song-note">${song.note}</div>` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    ` : '';
+
     // Weekly challenge
     const weeklyChallenge = week.weeklyChallenge?.[player] || '';
     const isApproved = isWeekApproved(player, weekNum);
@@ -862,6 +882,7 @@ function renderWeekContent(player) {
                 <div class="chord-list"></div>
             </div>
         </div>
+        ${songsSection}
         ${challengeSection}
     `;
 
