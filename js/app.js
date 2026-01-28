@@ -228,15 +228,25 @@ function updateAchievementStats() {
 }
 
 // Metronome functions
-function initAudioContext() {
+async function initAudioContext() {
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    // Always try to resume - needed after user interaction
+    if (audioContext.state === 'suspended') {
+        try {
+            await audioContext.resume();
+        } catch (e) {
+            console.warn('Could not resume audio context:', e);
+        }
     }
     return audioContext;
 }
 
-function playMetronomeTick(accent = false) {
-    const ctx = initAudioContext();
+async function playMetronomeTick(accent = false) {
+    const ctx = await initAudioContext();
+    if (ctx.state !== 'running') return;
+
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
@@ -251,8 +261,11 @@ function playMetronomeTick(accent = false) {
     osc.stop(ctx.currentTime + 0.05);
 }
 
-function startMetronome() {
+async function startMetronome() {
     if (metronomeInterval) return;
+
+    // Initialize audio context first (requires user gesture)
+    await initAudioContext();
 
     state.metronome.isPlaying = true;
     let beat = 0;

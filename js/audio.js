@@ -7,16 +7,22 @@ class MusicPlayer {
         this.masterGain = null;
     }
 
-    init() {
+    async init() {
         if (!this.audioContext) {
             this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
             this.masterGain = this.audioContext.createGain();
             this.masterGain.gain.value = 0.7;
             this.masterGain.connect(this.audioContext.destination);
         }
+        // Always try to resume - this is needed after user interaction
         if (this.audioContext.state === 'suspended') {
-            this.audioContext.resume();
+            try {
+                await this.audioContext.resume();
+            } catch (e) {
+                console.warn('Could not resume audio context:', e);
+            }
         }
+        return this.audioContext.state === 'running';
     }
 
     getNoteFrequency(note, octave) {
@@ -186,8 +192,12 @@ class MusicPlayer {
         }
     }
 
-    playChord(notes, instrument, duration = 1.8) {
-        this.init();
+    async playChord(notes, instrument, duration = 1.8) {
+        const ready = await this.init();
+        if (!ready) {
+            console.warn('Audio context not ready');
+            return;
+        }
         if (this.isPlaying) return;
         this.isPlaying = true;
 
@@ -209,8 +219,12 @@ class MusicPlayer {
         setTimeout(() => { this.isPlaying = false; }, duration * 1000);
     }
 
-    playScale(notes, instrument, noteDuration = 0.5) {
-        this.init();
+    async playScale(notes, instrument, noteDuration = 0.5) {
+        const ready = await this.init();
+        if (!ready) {
+            console.warn('Audio context not ready');
+            return;
+        }
         if (this.isPlaying) return;
         this.isPlaying = true;
 
