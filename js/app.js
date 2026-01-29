@@ -14,6 +14,32 @@ const JOINT_PRIZE = {
     requirement: 'Both complete all 12 weeks'
 };
 
+// Achievement definitions
+const ACHIEVEMENTS = {
+    guitar: [
+        { id: 'first-strum', name: 'First Strum', icon: '🎸', description: 'Complete your first item', condition: (state) => Object.keys(state.guitar.completed).length > 0 },
+        { id: 'week-complete', name: 'Week Master', icon: '📅', description: 'Complete all items in a week', condition: (state) => state.guitar.weeksCompleted >= 1 },
+        { id: 'barre-beginner', name: 'Barre Beginner', icon: '💪', description: 'Complete your first barre chord', condition: (state) => state.guitar.barreCount >= 1 },
+        { id: 'barre-master', name: 'Barre Master', icon: '🏆', description: 'Complete 5 barre chords', condition: (state) => state.guitar.barreCount >= 5 },
+        { id: 'scale-explorer', name: 'Scale Explorer', icon: '🎵', description: 'Complete 3 scales', condition: (state) => state.guitar.scaleCount >= 3 },
+        { id: 'pattern-pro', name: 'Pattern Pro', icon: '🧠', description: 'Complete 6 scales', condition: (state) => state.guitar.scaleCount >= 6 },
+        { id: 'caged-explorer', name: 'CAGED Explorer', icon: '🔓', description: 'Learn 3 different CAGED shapes', condition: (state) => state.guitar.cagedShapes.size >= 3 },
+        { id: 'halfway', name: 'Halfway Hero', icon: '⭐', description: 'Complete 6 weeks', condition: (state) => state.guitar.weeksCompleted >= 6 },
+        { id: 'guitar-graduate', name: 'Guitar Graduate', icon: '🎓', description: 'Complete all 12 weeks', condition: (state) => state.guitar.weeksCompleted >= 12 }
+    ],
+    piano: [
+        { id: 'first-keys', name: 'First Keys', icon: '🎹', description: 'Complete your first item', condition: (state) => Object.keys(state.piano.completed).length > 0 },
+        { id: 'week-complete', name: 'Week Master', icon: '📅', description: 'Complete all items in a week', condition: (state) => state.piano.weeksCompleted >= 1 },
+        { id: 'inversion-explorer', name: 'Inversion Explorer', icon: '🔄', description: 'Master all inversions of a chord', condition: (state) => state.piano.inversionSets >= 1 },
+        { id: 'inversion-master', name: 'Inversion Master', icon: '🏅', description: 'Master inversions of 5 chords', condition: (state) => state.piano.inversionSets >= 5 },
+        { id: 'speed-demon', name: 'Speed Demon', icon: '⚡', description: 'Record a fast tempo', condition: (state) => state.piano.speedRecords && state.piano.speedRecords.length >= 1 },
+        { id: 'black-keys', name: 'Black Key Explorer', icon: '⬛', description: 'Complete 3 scales with black keys', condition: (state) => state.piano.blackKeyScales >= 3 },
+        { id: 'two-hands', name: 'Two Hands', icon: '🙌', description: 'Complete scales with both hands', condition: (state) => state.piano.handsTogetherCount >= 3 },
+        { id: 'halfway', name: 'Halfway Hero', icon: '⭐', description: 'Complete 6 weeks', condition: (state) => state.piano.weeksCompleted >= 6 },
+        { id: 'piano-graduate', name: 'Piano Graduate', icon: '🎓', description: 'Complete all 12 weeks', condition: (state) => state.piano.weeksCompleted >= 12 }
+    ]
+};
+
 // State
 let state = {
     guitar: {
