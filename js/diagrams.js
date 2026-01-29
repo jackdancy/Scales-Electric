@@ -149,123 +149,124 @@ const GUITAR_CHORDS = {
 };
 
 // ==================== GUITAR SCALE DIAGRAMS ====================
+// Finger numbers: 1=Index, 2=Middle, 3=Ring, 4=Pinky, 0=Open string
 const GUITAR_SCALES = {
     // Week 1
     'C Major Scale (Open Position)': {
         startFret: 0,
         positions: [
-            {string: 5, fret: 3, note: 'C'}, {string: 5, fret: 5, note: 'D'},
-            {string: 4, fret: 2, note: 'E'}, {string: 4, fret: 3, note: 'F'},
-            {string: 4, fret: 5, note: 'G'}, {string: 3, fret: 2, note: 'A'},
-            {string: 3, fret: 4, note: 'B'}, {string: 3, fret: 5, note: 'C'}
+            {string: 5, fret: 3, note: 'C', finger: 2}, {string: 5, fret: 5, note: 'D', finger: 4},
+            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 3, note: 'F', finger: 2},
+            {string: 4, fret: 5, note: 'G', finger: 4}, {string: 3, fret: 2, note: 'A', finger: 1},
+            {string: 3, fret: 4, note: 'B', finger: 3}, {string: 3, fret: 5, note: 'C', finger: 4}
         ]
     },
     // Week 2
     'G Major Scale (Open Position)': {
         startFret: 0,
         positions: [
-            {string: 6, fret: 3, note: 'G'}, {string: 5, fret: 0, note: 'A'},
-            {string: 5, fret: 2, note: 'B'}, {string: 5, fret: 3, note: 'C'},
-            {string: 4, fret: 0, note: 'D'}, {string: 4, fret: 2, note: 'E'},
-            {string: 4, fret: 4, note: 'F#'}, {string: 3, fret: 0, note: 'G'}
+            {string: 6, fret: 3, note: 'G', finger: 2}, {string: 5, fret: 0, note: 'A', finger: 0},
+            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 3, note: 'C', finger: 2},
+            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 1},
+            {string: 4, fret: 4, note: 'F#', finger: 3}, {string: 3, fret: 0, note: 'G', finger: 0}
         ]
     },
     // Week 3
     'D Major Scale (Open Position)': {
         startFret: 0,
         positions: [
-            {string: 4, fret: 0, note: 'D'}, {string: 4, fret: 2, note: 'E'},
-            {string: 4, fret: 4, note: 'F#'}, {string: 3, fret: 0, note: 'G'},
-            {string: 3, fret: 2, note: 'A'}, {string: 3, fret: 4, note: 'B'},
-            {string: 2, fret: 2, note: 'C#'}, {string: 2, fret: 3, note: 'D'}
+            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 1},
+            {string: 4, fret: 4, note: 'F#', finger: 3}, {string: 3, fret: 0, note: 'G', finger: 0},
+            {string: 3, fret: 2, note: 'A', finger: 1}, {string: 3, fret: 4, note: 'B', finger: 3},
+            {string: 2, fret: 2, note: 'C#', finger: 1}, {string: 2, fret: 3, note: 'D', finger: 2}
         ]
     },
     // Week 4
     'C-G-D Chord Transitions': {
         startFret: 0,
         positions: [
-            {string: 5, fret: 3, note: 'C'}, {string: 4, fret: 2, note: 'E'},
-            {string: 3, fret: 0, note: 'G'}, {string: 6, fret: 3, note: 'G'},
-            {string: 5, fret: 2, note: 'B'}, {string: 4, fret: 0, note: 'D'}
+            {string: 5, fret: 3, note: 'C', finger: 3}, {string: 4, fret: 2, note: 'E', finger: 2},
+            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 6, fret: 3, note: 'G', finger: 2},
+            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 4, fret: 0, note: 'D', finger: 0}
         ]
     },
     // Week 5
     'A Minor Scale (Natural)': {
         startFret: 0,
         positions: [
-            {string: 5, fret: 0, note: 'A'}, {string: 5, fret: 2, note: 'B'},
-            {string: 5, fret: 3, note: 'C'}, {string: 4, fret: 0, note: 'D'},
-            {string: 4, fret: 2, note: 'E'}, {string: 4, fret: 3, note: 'F'},
-            {string: 3, fret: 0, note: 'G'}, {string: 3, fret: 2, note: 'A'}
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 2, note: 'B', finger: 1},
+            {string: 5, fret: 3, note: 'C', finger: 2}, {string: 4, fret: 0, note: 'D', finger: 0},
+            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 3, note: 'F', finger: 2},
+            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 3, fret: 2, note: 'A', finger: 1}
         ]
     },
     // Week 6
     'E Minor Scale (Natural)': {
         startFret: 0,
         positions: [
-            {string: 6, fret: 0, note: 'E'}, {string: 6, fret: 2, note: 'F#'},
-            {string: 6, fret: 3, note: 'G'}, {string: 5, fret: 0, note: 'A'},
-            {string: 5, fret: 2, note: 'B'}, {string: 5, fret: 3, note: 'C'},
-            {string: 4, fret: 0, note: 'D'}, {string: 4, fret: 2, note: 'E'}
+            {string: 6, fret: 0, note: 'E', finger: 0}, {string: 6, fret: 2, note: 'F#', finger: 1},
+            {string: 6, fret: 3, note: 'G', finger: 2}, {string: 5, fret: 0, note: 'A', finger: 0},
+            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 3, note: 'C', finger: 2},
+            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 1}
         ]
     },
     // Week 7
     'A Major Scale (Open Position)': {
         startFret: 0,
         positions: [
-            {string: 5, fret: 0, note: 'A'}, {string: 5, fret: 2, note: 'B'},
-            {string: 5, fret: 4, note: 'C#'}, {string: 4, fret: 0, note: 'D'},
-            {string: 4, fret: 2, note: 'E'}, {string: 4, fret: 4, note: 'F#'},
-            {string: 3, fret: 1, note: 'G#'}, {string: 3, fret: 2, note: 'A'}
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 2, note: 'B', finger: 1},
+            {string: 5, fret: 4, note: 'C#', finger: 3}, {string: 4, fret: 0, note: 'D', finger: 0},
+            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 4, note: 'F#', finger: 3},
+            {string: 3, fret: 1, note: 'G#', finger: 1}, {string: 3, fret: 2, note: 'A', finger: 2}
         ]
     },
     // Week 8
     'E Major Scale (Open Position)': {
         startFret: 0,
         positions: [
-            {string: 6, fret: 0, note: 'E'}, {string: 6, fret: 2, note: 'F#'},
-            {string: 6, fret: 4, note: 'G#'}, {string: 5, fret: 0, note: 'A'},
-            {string: 5, fret: 2, note: 'B'}, {string: 5, fret: 4, note: 'C#'},
-            {string: 4, fret: 1, note: 'D#'}, {string: 4, fret: 2, note: 'E'}
+            {string: 6, fret: 0, note: 'E', finger: 0}, {string: 6, fret: 2, note: 'F#', finger: 1},
+            {string: 6, fret: 4, note: 'G#', finger: 3}, {string: 5, fret: 0, note: 'A', finger: 0},
+            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 4, note: 'C#', finger: 3},
+            {string: 4, fret: 1, note: 'D#', finger: 1}, {string: 4, fret: 2, note: 'E', finger: 2}
         ]
     },
     // Week 9
     'F Major Scale': {
-        startFret: 1,
+        startFret: 0,
         positions: [
-            {string: 6, fret: 1, note: 'F'}, {string: 6, fret: 3, note: 'G'},
-            {string: 5, fret: 0, note: 'A'}, {string: 5, fret: 1, note: 'Bb'},
-            {string: 5, fret: 3, note: 'C'}, {string: 4, fret: 0, note: 'D'},
-            {string: 4, fret: 2, note: 'E'}, {string: 4, fret: 3, note: 'F'}
+            {string: 6, fret: 1, note: 'F', finger: 1}, {string: 6, fret: 3, note: 'G', finger: 3},
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 1, note: 'Bb', finger: 1},
+            {string: 5, fret: 3, note: 'C', finger: 3}, {string: 4, fret: 0, note: 'D', finger: 0},
+            {string: 4, fret: 2, note: 'E', finger: 2}, {string: 4, fret: 3, note: 'F', finger: 3}
         ]
     },
     // Week 10
     'D Minor Scale (Natural)': {
         startFret: 0,
         positions: [
-            {string: 4, fret: 0, note: 'D'}, {string: 4, fret: 2, note: 'E'},
-            {string: 4, fret: 3, note: 'F'}, {string: 3, fret: 0, note: 'G'},
-            {string: 3, fret: 2, note: 'A'}, {string: 3, fret: 3, note: 'Bb'},
-            {string: 2, fret: 1, note: 'C'}, {string: 2, fret: 3, note: 'D'}
+            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 1},
+            {string: 4, fret: 3, note: 'F', finger: 2}, {string: 3, fret: 0, note: 'G', finger: 0},
+            {string: 3, fret: 2, note: 'A', finger: 1}, {string: 3, fret: 3, note: 'Bb', finger: 2},
+            {string: 2, fret: 1, note: 'C', finger: 1}, {string: 2, fret: 3, note: 'D', finger: 3}
         ]
     },
     // Week 11
     'A Minor Pentatonic (Box 1)': {
         startFret: 5,
         positions: [
-            {string: 6, fret: 5, note: 'A'}, {string: 6, fret: 8, note: 'C'},
-            {string: 5, fret: 5, note: 'D'}, {string: 5, fret: 7, note: 'E'},
-            {string: 4, fret: 5, note: 'G'}, {string: 4, fret: 7, note: 'A'}
+            {string: 6, fret: 5, note: 'A', finger: 1}, {string: 6, fret: 8, note: 'C', finger: 4},
+            {string: 5, fret: 5, note: 'D', finger: 1}, {string: 5, fret: 7, note: 'E', finger: 3},
+            {string: 4, fret: 5, note: 'G', finger: 1}, {string: 4, fret: 7, note: 'A', finger: 3}
         ]
     },
     // Week 12
     'Blues Scale (A)': {
         startFret: 5,
         positions: [
-            {string: 6, fret: 5, note: 'A'}, {string: 6, fret: 8, note: 'C'},
-            {string: 5, fret: 5, note: 'D'}, {string: 5, fret: 6, note: 'Eb'},
-            {string: 5, fret: 7, note: 'E'}, {string: 4, fret: 5, note: 'G'},
-            {string: 4, fret: 7, note: 'A'}
+            {string: 6, fret: 5, note: 'A', finger: 1}, {string: 6, fret: 8, note: 'C', finger: 4},
+            {string: 5, fret: 5, note: 'D', finger: 1}, {string: 5, fret: 6, note: 'Eb', finger: 2},
+            {string: 5, fret: 7, note: 'E', finger: 3}, {string: 4, fret: 5, note: 'G', finger: 1},
+            {string: 4, fret: 7, note: 'A', finger: 3}
         ]
     }
 };
@@ -697,24 +698,46 @@ class DiagramModal {
         // Draw scale positions
         scale.positions.forEach((pos, idx) => {
             const stringY = 30 + (6 - pos.string) * 22;
-            const fretX = 20 + (pos.fret - startFret + 0.5) * 40;
+            const fretX = pos.fret === 0 ? 10 : 20 + (pos.fret - startFret + 0.5) * 40;
 
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', fretX);
-            circle.setAttribute('cy', stringY);
-            circle.setAttribute('r', '10');
-            circle.setAttribute('fill', idx === 0 ? '#e74c3c' : '#3498db');
-            svg.appendChild(circle);
+            // For open strings, draw an open circle at the left
+            if (pos.fret === 0 || pos.finger === 0) {
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', '10');
+                circle.setAttribute('cy', stringY);
+                circle.setAttribute('r', '8');
+                circle.setAttribute('fill', 'none');
+                circle.setAttribute('stroke', idx === 0 ? '#e74c3c' : '#2ecc71');
+                circle.setAttribute('stroke-width', '2');
+                svg.appendChild(circle);
 
-            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text.setAttribute('x', fretX);
-            text.setAttribute('y', stringY + 4);
-            text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('fill', 'white');
-            text.setAttribute('font-size', '9');
-            text.setAttribute('font-weight', 'bold');
-            text.textContent = pos.note;
-            svg.appendChild(text);
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', '10');
+                text.setAttribute('y', stringY + 3);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('fill', idx === 0 ? '#e74c3c' : '#2ecc71');
+                text.setAttribute('font-size', '8');
+                text.setAttribute('font-weight', 'bold');
+                text.textContent = '0';
+                svg.appendChild(text);
+            } else {
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', fretX);
+                circle.setAttribute('cy', stringY);
+                circle.setAttribute('r', '10');
+                circle.setAttribute('fill', idx === 0 ? '#e74c3c' : '#3498db');
+                svg.appendChild(circle);
+
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', fretX);
+                text.setAttribute('y', stringY + 4);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('fill', 'white');
+                text.setAttribute('font-size', '11');
+                text.setAttribute('font-weight', 'bold');
+                text.textContent = pos.finger !== undefined ? pos.finger : pos.note;
+                svg.appendChild(text);
+            }
         });
 
         container.appendChild(svg);
@@ -722,6 +745,9 @@ class DiagramModal {
         notesDiv.innerHTML = `
             <div class="scale-notes">
                 <strong>Notes:</strong> ${scale.positions.map(p => p.note).join(' - ')}
+            </div>
+            <div class="finger-legend">
+                <span><strong>Fingers:</strong> 1=Index, 2=Middle, 3=Ring, 4=Pinky, 0=Open</span>
             </div>
         `;
     }
