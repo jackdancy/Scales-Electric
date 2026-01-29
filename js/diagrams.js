@@ -153,13 +153,22 @@ const GUITAR_CHORDS = {
 // Position-based curriculum: learn patterns, then move them anywhere
 const GUITAR_SCALES = {
     // Week 1 - G Major Open Position (Home Base)
+    // Fingering: 6th string (2,3), 5th string (1,3), 4th string (2,4), 3rd string (2), 2nd string (1,3), 1st string (2,3)
     'G Major Scale (Open Position)': {
         startFret: 0,
         positions: [
-            {string: 6, fret: 3, note: 'G', finger: 2}, {string: 5, fret: 0, note: 'A', finger: 0},
-            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 3, note: 'C', finger: 2},
-            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 1},
-            {string: 4, fret: 4, note: 'F#', finger: 3}, {string: 3, fret: 0, note: 'G', finger: 0}
+            // 6th string - fingers 2 and 3
+            {string: 6, fret: 2, note: 'F#', finger: 2}, {string: 6, fret: 3, note: 'G', finger: 3},
+            // 5th string - open, then fingers 1 and 3
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 3, note: 'C', finger: 3},
+            // 4th string - open, then fingers 2 and 4
+            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 2}, {string: 4, fret: 4, note: 'F#', finger: 4},
+            // 3rd string - open, then finger 2
+            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 3, fret: 2, note: 'A', finger: 2},
+            // 2nd string - open, then fingers 1 and 3
+            {string: 2, fret: 0, note: 'B', finger: 0}, {string: 2, fret: 1, note: 'C', finger: 1}, {string: 2, fret: 3, note: 'D', finger: 3},
+            // 1st string - open, then fingers 2 and 3
+            {string: 1, fret: 0, note: 'E', finger: 0}, {string: 1, fret: 2, note: 'F#', finger: 2}, {string: 1, fret: 3, note: 'G', finger: 3}
         ]
     },
     // Week 2 - E Minor Pentatonic (The Essential Improv Scale)
@@ -683,63 +692,68 @@ class DiagramModal {
             return;
         }
 
+        // Find the fret range needed for this scale
+        const frets = scale.positions.filter(p => p.fret > 0).map(p => p.fret);
+        const maxFret = Math.max(...frets, 4);
+        const startFret = scale.startFret || 0;
+        const fretCount = Math.max(5, maxFret - startFret + 1);
+
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('viewBox', '0 0 280 160');
-        svg.setAttribute('class', 'guitar-scale-diagram');
+        // Vertical orientation like chord diagrams
+        const height = 50 + fretCount * 28;
+        svg.setAttribute('viewBox', `0 0 150 ${height}`);
+        svg.setAttribute('class', 'guitar-diagram guitar-scale-diagram');
 
-        const startFret = Math.max(0, scale.startFret);
-        const fretCount = 6;
-
-        // Draw fret numbers
-        for (let i = 0; i < fretCount; i++) {
-            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text.setAttribute('x', 40 + i * 40);
-            text.setAttribute('y', '15');
-            text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('fill', '#888');
-            text.setAttribute('font-size', '10');
-            text.textContent = startFret + i;
-            svg.appendChild(text);
+        // Fret number indicator if not at nut
+        if (startFret > 0) {
+            const fretNum = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            fretNum.setAttribute('x', '15');
+            fretNum.setAttribute('y', '55');
+            fretNum.setAttribute('fill', '#888');
+            fretNum.setAttribute('font-size', '12');
+            fretNum.textContent = startFret + 'fr';
+            svg.appendChild(fretNum);
         }
 
-        // Draw nut or fret marker
+        // Draw nut at top
         if (startFret === 0) {
             const nut = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-            nut.setAttribute('x', '18');
-            nut.setAttribute('y', '25');
-            nut.setAttribute('width', '4');
-            nut.setAttribute('height', '110');
+            nut.setAttribute('x', '25');
+            nut.setAttribute('y', '30');
+            nut.setAttribute('width', '100');
+            nut.setAttribute('height', '5');
             nut.setAttribute('fill', '#333');
             svg.appendChild(nut);
         }
 
-        // Draw frets
-        for (let i = 0; i <= fretCount; i++) {
+        // Draw horizontal frets
+        for (let i = 0; i < fretCount; i++) {
             const fret = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            fret.setAttribute('x1', 20 + i * 40);
-            fret.setAttribute('y1', '25');
-            fret.setAttribute('x2', 20 + i * 40);
-            fret.setAttribute('y2', '135');
+            fret.setAttribute('x1', '25');
+            fret.setAttribute('y1', 35 + i * 28);
+            fret.setAttribute('x2', '125');
+            fret.setAttribute('y2', 35 + i * 28);
             fret.setAttribute('stroke', '#666');
             fret.setAttribute('stroke-width', '2');
             svg.appendChild(fret);
         }
 
-        // Draw strings
-        const stringNames = ['e', 'B', 'G', 'D', 'A', 'E'];
+        // Draw vertical strings (E A D G B e from left to right)
+        const stringNames = ['E', 'A', 'D', 'G', 'B', 'e'];
         for (let i = 0; i < 6; i++) {
             const string = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            string.setAttribute('x1', '20');
-            string.setAttribute('y1', 30 + i * 22);
-            string.setAttribute('x2', 20 + fretCount * 40);
-            string.setAttribute('y2', 30 + i * 22);
+            string.setAttribute('x1', 25 + i * 20);
+            string.setAttribute('y1', '30');
+            string.setAttribute('x2', 25 + i * 20);
+            string.setAttribute('y2', 35 + (fretCount - 1) * 28);
             string.setAttribute('stroke', '#aaa');
-            string.setAttribute('stroke-width', i > 2 ? '2' : '1');
+            string.setAttribute('stroke-width', i < 3 ? '2' : '1');
             svg.appendChild(string);
 
+            // String labels at bottom
             const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            label.setAttribute('x', '10');
-            label.setAttribute('y', 34 + i * 22);
+            label.setAttribute('x', 25 + i * 20);
+            label.setAttribute('y', 35 + (fretCount - 1) * 28 + 15);
             label.setAttribute('text-anchor', 'middle');
             label.setAttribute('fill', '#888');
             label.setAttribute('font-size', '10');
@@ -747,48 +761,47 @@ class DiagramModal {
             svg.appendChild(label);
         }
 
-        // Draw scale positions
+        // Draw scale positions with finger numbers
         scale.positions.forEach((pos, idx) => {
-            const stringY = 30 + (6 - pos.string) * 22;
-            const fretX = pos.fret === 0 ? 10 : 20 + (pos.fret - startFret + 0.5) * 40;
+            // String position: string 6 (low E) is index 0, string 1 (high e) is index 5
+            const stringIdx = 6 - pos.string;
+            const x = 25 + stringIdx * 20;
 
-            // For open strings, draw an open circle at the left
             if (pos.fret === 0 || pos.finger === 0) {
+                // Open string - draw circle above nut
                 const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                circle.setAttribute('cx', '10');
-                circle.setAttribute('cy', stringY);
-                circle.setAttribute('r', '8');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', '18');
+                circle.setAttribute('r', '6');
                 circle.setAttribute('fill', 'none');
-                circle.setAttribute('stroke', idx === 0 ? '#e74c3c' : '#2ecc71');
+                circle.setAttribute('stroke', '#2ecc71');
                 circle.setAttribute('stroke-width', '2');
                 svg.appendChild(circle);
-
-                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                text.setAttribute('x', '10');
-                text.setAttribute('y', stringY + 3);
-                text.setAttribute('text-anchor', 'middle');
-                text.setAttribute('fill', idx === 0 ? '#e74c3c' : '#2ecc71');
-                text.setAttribute('font-size', '8');
-                text.setAttribute('font-weight', 'bold');
-                text.textContent = '0';
-                svg.appendChild(text);
             } else {
+                // Fretted note
+                const fretPos = pos.fret - startFret;
+                const y = 35 + (fretPos - 0.5) * 28;
+
                 const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                circle.setAttribute('cx', fretX);
-                circle.setAttribute('cy', stringY);
-                circle.setAttribute('r', '10');
-                circle.setAttribute('fill', idx === 0 ? '#e74c3c' : '#3498db');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', y);
+                circle.setAttribute('r', '9');
+                circle.setAttribute('fill', '#3498db');
                 svg.appendChild(circle);
 
-                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                text.setAttribute('x', fretX);
-                text.setAttribute('y', stringY + 4);
-                text.setAttribute('text-anchor', 'middle');
-                text.setAttribute('fill', 'white');
-                text.setAttribute('font-size', '11');
-                text.setAttribute('font-weight', 'bold');
-                text.textContent = pos.finger !== undefined ? pos.finger : pos.note;
-                svg.appendChild(text);
+                // Show finger number
+                const finger = pos.finger !== undefined ? pos.finger : '';
+                if (finger !== '') {
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', x);
+                    text.setAttribute('y', y + 4);
+                    text.setAttribute('text-anchor', 'middle');
+                    text.setAttribute('fill', 'white');
+                    text.setAttribute('font-size', '11');
+                    text.setAttribute('font-weight', 'bold');
+                    text.textContent = finger;
+                    svg.appendChild(text);
+                }
             }
         });
 
@@ -799,7 +812,7 @@ class DiagramModal {
                 <strong>Notes:</strong> ${scale.positions.map(p => p.note).join(' - ')}
             </div>
             <div class="finger-legend">
-                <span><strong>Fingers:</strong> 1=Index, 2=Middle, 3=Ring, 4=Pinky, 0=Open</span>
+                <span><strong>Fingers:</strong> 1=Index, 2=Middle, 3=Ring, 4=Pinky</span>
             </div>
         `;
     }
