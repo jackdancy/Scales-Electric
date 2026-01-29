@@ -69,10 +69,32 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Sweet Home Alabama", artist: "Lynyrd Skynyrd", chords: "D - C - G", note: "Classic G-C-D pattern!" }
+                {
+                    title: "Sweet Home Alabama",
+                    artist: "Lynyrd Skynyrd",
+                    chords: "D - C - G",
+                    note: "Classic G-C-D pattern!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/7e89621JPkKaeDSTQ3avtg",
+                        video: "https://www.youtube.com/watch?v=ye5BuYf8q4o",
+                        tutorial: "https://www.justinguitar.com/songs/lynyrd-skynyrd-sweet-home-alabama",
+                        tab: "https://tabs.ultimate-guitar.com/tab/lynyrd-skynyrd/sweet-home-alabama-chords-849467"
+                    }
+                }
             ],
             piano: [
-                { title: "Crocodile Rock", artist: "Elton John", chords: "G - C - G - D", note: "Bouncy left hand pattern" }
+                {
+                    title: "Crocodile Rock",
+                    artist: "Elton John",
+                    chords: "G - C - G - D",
+                    note: "Bouncy left hand pattern",
+                    links: {
+                        spotify: "https://open.spotify.com/track/6WCeFNVAXUtNczb7lqLiZU",
+                        video: "https://www.youtube.com/watch?v=75r0nQu-hMs",
+                        tutorial: "https://sheetmusicboss.com/2020/01/05/elton-john-crocodile-rock-piano-tutorial/",
+                        sheet: "https://musescore.com/user/10205431/scores/5012973"
+                    }
+                }
             ]
         },
         guitar: {
@@ -127,12 +149,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "You Shook Me All Night Long", artist: "AC/DC", chords: "G - C - D - G", note: "Classic rock rhythm!" },
-                { title: "Love Me Do", artist: "The Beatles", chords: "G - C - G - D", note: "Simple and fun" }
+                {
+                    title: "You Shook Me All Night Long",
+                    artist: "AC/DC",
+                    chords: "G - C - D - G",
+                    note: "Classic rock rhythm!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/5qhpJKoLdGAfjMHfkNsKgd",
+                        video: "https://www.youtube.com/watch?v=Lo2qQmj0_h4",
+                        tutorial: "https://www.justinguitar.com/songs/ac-dc-you-shook-me-all-night-long-1-3-chords-tabs-guitar-lesson-st-319",
+                        tab: "https://tabs.ultimate-guitar.com/tab/acdc/you-shook-me-all-night-long-chords-621851"
+                    }
+                },
+                {
+                    title: "Love Me Do",
+                    artist: "The Beatles",
+                    chords: "G - C - G - D",
+                    note: "Simple and fun",
+                    links: {
+                        spotify: "https://open.spotify.com/track/02iXMeqfPedT0HINpGSvTH",
+                        video: "https://www.youtube.com/watch?v=0pGOFX1D_jg",
+                        tutorial: "https://www.justinguitar.com/songs/the-beatles-love-me-do-chords-tabs-guitar-lesson-bs-108",
+                        tab: "https://tabs.ultimate-guitar.com/tab/the-beatles/love-me-do-chords-17428"
+                    }
+                }
             ],
             piano: [
-                { title: "Bennie and the Jets", artist: "Elton John", chords: "G - Am - C - D", note: "Work on that intro riff!" },
-                { title: "Jealous Guy", artist: "John Lennon", chords: "G - Em - D - C", note: "Beautiful ballad" }
+                {
+                    title: "Bennie and the Jets",
+                    artist: "Elton John",
+                    chords: "G - Am - C - D",
+                    note: "Work on that intro riff!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/5Ryb8xsHLBwHdHF3KLHB2l",
+                        video: "https://www.youtube.com/watch?v=p5rQHoaQpTw",
+                        tutorial: "https://sheetmusicboss.com/2020/01/09/elton-john-bennie-and-the-jets-piano-tutorial/",
+                        sheet: "https://musescore.com/user/13172/scores/2926031"
+                    }
+                },
+                {
+                    title: "Jealous Guy",
+                    artist: "John Lennon",
+                    chords: "G - Em - D - C",
+                    note: "Beautiful ballad",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4bfAfSPDlp2vLlPbNC6N8z",
+                        video: "https://www.youtube.com/watch?v=DtUcr7rU5aE",
+                        tutorial: "https://hdpiano.com/lesson/jealous-guy-by-john-lennon",
+                        sheet: "https://musescore.com/user/28722261/scores/10731862"
+                    }
+                }
             ]
         },
         guitar: {
@@ -186,12 +252,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Twist and Shout", artist: "The Beatles", chords: "D - G - A", note: "I-IV-V in D - shake it up!" },
-                { title: "Wild Thing", artist: "The Troggs", chords: "A - D - A - E", note: "Simple I-IV-V rock" }
+                {
+                    title: "Twist and Shout",
+                    artist: "The Beatles",
+                    chords: "D - G - A",
+                    note: "I-IV-V in D - shake it up!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4Ssh9E40qK3NYz3y89NqjD",
+                        video: "https://www.youtube.com/watch?v=Lu4KXBdW5bE",
+                        tutorial: "https://www.justinguitar.com/songs/the-beatles-twist-and-shout-chords-tabs-guitar-lesson-bs-207",
+                        tab: "https://tabs.ultimate-guitar.com/tab/the-beatles/twist-and-shout-chords-489173"
+                    }
+                },
+                {
+                    title: "Wild Thing",
+                    artist: "The Troggs",
+                    chords: "A - D - A - E",
+                    note: "Simple I-IV-V rock",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4mSXQDjxm9bLTqFOl3qnuR",
+                        video: "https://www.youtube.com/watch?v=gSWInYFVksg",
+                        tutorial: "https://www.justinguitar.com/songs/the-troggs-wild-thing-chords-tabs-guitar-lesson-bs-210",
+                        tab: "https://tabs.ultimate-guitar.com/tab/the-troggs/wild-thing-chords-1056155"
+                    }
+                }
             ],
             piano: [
-                { title: "Twist and Shout", artist: "The Beatles", chords: "D - G - A - G", note: "Classic I-IV-V" },
-                { title: "La Bamba", artist: "Ritchie Valens", chords: "C - F - G", note: "I-IV-V in C!" }
+                {
+                    title: "Twist and Shout",
+                    artist: "The Beatles",
+                    chords: "D - G - A - G",
+                    note: "Classic I-IV-V",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4Ssh9E40qK3NYz3y89NqjD",
+                        video: "https://www.youtube.com/watch?v=Lu4KXBdW5bE",
+                        tutorial: "https://www.onlinepianist.com/virtual-piano/piano-songs/the-beatles/twist-and-shout",
+                        sheet: "https://musescore.com/song/twist_and_shout-1657476"
+                    }
+                },
+                {
+                    title: "La Bamba",
+                    artist: "Ritchie Valens",
+                    chords: "C - F - G",
+                    note: "I-IV-V in C!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/1OBzlFPbLq0zqBbAP0v7jT",
+                        video: "https://www.youtube.com/watch?v=Jp6j5HJ-Cok",
+                        tutorial: "https://www.onlinepianist.com/virtual-piano/piano-songs/ritchie-valens/la-bamba",
+                        sheet: "https://musescore.com/song/la_bamba-1657527"
+                    }
+                }
             ]
         },
         guitar: {
@@ -237,12 +347,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "All Along the Watchtower", artist: "Hendrix", chords: "Am - G - F - G", note: "Iconic progression!" },
-                { title: "House of the Rising Sun", artist: "The Animals", chords: "Am - C - D - F", note: "Arpeggiate the chords" }
+                {
+                    title: "All Along the Watchtower",
+                    artist: "Hendrix",
+                    chords: "Am - G - F - G",
+                    note: "Iconic progression!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/3ORrnBsrfr42j6FNJf4oks",
+                        video: "https://www.youtube.com/watch?v=TLV4_xaYynY",
+                        tutorial: "https://www.jonmaclennan.com/blog/all-along-the-watchtower-guitar-lesson",
+                        tab: "https://tabs.ultimate-guitar.com/tab/jimi-hendrix/all-along-the-watchtower-chords-810679"
+                    }
+                },
+                {
+                    title: "House of the Rising Sun",
+                    artist: "The Animals",
+                    chords: "Am - C - D - F",
+                    note: "Arpeggiate the chords",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4RthO18mNBuWxwlqbCNfmY",
+                        video: "https://www.youtube.com/watch?v=4-43lLKaqBQ",
+                        tutorial: "https://www.justinguitar.com/songs/the-animals-house-of-the-rising-sun-chords-tabs-guitar-lesson-bs-610",
+                        tab: "https://tabs.ultimate-guitar.com/tab/the-animals/house-of-the-rising-sun-chords-763620"
+                    }
+                }
             ],
             piano: [
-                { title: "Still D.R.E.", artist: "Dr. Dre", chords: "Am - F - C - G", note: "That famous piano riff!" },
-                { title: "I Just Called to Say I Love You", artist: "Stevie Wonder", chords: "Am - G - C", note: "Sweet melody" }
+                {
+                    title: "Still D.R.E.",
+                    artist: "Dr. Dre",
+                    chords: "Am - F - C - G",
+                    note: "That famous piano riff!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/503OTo2dSqe7qk76rgsbep",
+                        video: "https://www.youtube.com/watch?v=_CL6n0FJZpk",
+                        tutorial: "https://www.skoove.com/blog/how-to-play-still-dre-on-piano/",
+                        sheet: "https://musescore.com/tuvijah/scores/966901"
+                    }
+                },
+                {
+                    title: "I Just Called to Say I Love You",
+                    artist: "Stevie Wonder",
+                    chords: "Am - G - C",
+                    note: "Sweet melody",
+                    links: {
+                        spotify: "https://open.spotify.com/track/3Qp66BnUD0k9O7fXi4p4yC",
+                        video: "https://www.youtube.com/watch?v=1bGOgY1CmiU",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/stevie-wonder/i-just-called-to-say-i-love-you",
+                        sheet: "https://musescore.com/user/1842796/scores/7809446"
+                    }
+                }
             ]
         },
         guitar: {
@@ -297,12 +451,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Wish You Were Here", artist: "Pink Floyd", chords: "Em - G - Em - G - A", note: "Beautiful acoustic intro" },
-                { title: "Heart of Gold", artist: "Neil Young", chords: "Em - C - D - G", note: "Classic Neil Young!" }
+                {
+                    title: "Wish You Were Here",
+                    artist: "Pink Floyd",
+                    chords: "Em - G - Em - G - A",
+                    note: "Beautiful acoustic intro",
+                    links: {
+                        spotify: "https://open.spotify.com/track/7dZraBDr6DgGk1ecsAhQJg",
+                        video: "https://www.youtube.com/watch?v=IXdNnw99-Ic",
+                        tutorial: "https://www.justinguitar.com/songs/pink-floyd-wish-you-were-here-chords-tabs-guitar-lesson-st-301",
+                        tab: "https://tabs.ultimate-guitar.com/tab/pink-floyd/wish-you-were-here-tabs-984061"
+                    }
+                },
+                {
+                    title: "Heart of Gold",
+                    artist: "Neil Young",
+                    chords: "Em - C - D - G",
+                    note: "Classic Neil Young!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/5WJmk2QJqhMOxoYAujrqf2",
+                        video: "https://www.youtube.com/watch?v=Eh44QPT1mPE",
+                        tutorial: "https://www.justinguitar.com/songs/neil-young-heart-of-gold-chords-tabs-guitar-lesson-st-909",
+                        tab: "https://tabs.ultimate-guitar.com/tab/neil-young/heart-of-gold-chords-56555"
+                    }
+                }
             ],
             piano: [
-                { title: "Piano Man", artist: "Billy Joel", chords: "C - G - F - Em", note: "Learn that iconic intro" },
-                { title: "Imagine", artist: "John Lennon", chords: "C - F - C - F - Am", note: "Simple but powerful" }
+                {
+                    title: "Piano Man",
+                    artist: "Billy Joel",
+                    chords: "C - G - F - Em",
+                    note: "Learn that iconic intro",
+                    links: {
+                        spotify: "https://open.spotify.com/track/70C4NyhjD5OZUMzvWZ3njJ",
+                        video: "https://www.youtube.com/watch?v=gxEPV4kolz0",
+                        tutorial: "https://sheetmusicboss.com/2017/04/18/billy-joel-piano-man/",
+                        sheet: "https://musescore.com/song/piano_man-1657555"
+                    }
+                },
+                {
+                    title: "Imagine",
+                    artist: "John Lennon",
+                    chords: "C - F - C - F - Am",
+                    note: "Simple but powerful",
+                    links: {
+                        spotify: "https://open.spotify.com/track/7pKfPomDEeI4TPT6EOYjn9",
+                        video: "https://www.youtube.com/watch?v=YkgkThdzX-8",
+                        tutorial: "https://www.pianote.com/blog/how-to-play-imagine-on-piano/",
+                        sheet: "https://musescore.com/user/6662591/scores/4369656"
+                    }
+                }
             ]
         },
         guitar: {
@@ -356,12 +554,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Back in Black", artist: "AC/DC", chords: "E - D - A", note: "That legendary riff!" },
-                { title: "Rockin' in the Free World", artist: "Neil Young", chords: "Em - D - C - Em - A", note: "Powerful anthem" }
+                {
+                    title: "Back in Black",
+                    artist: "AC/DC",
+                    chords: "E - D - A",
+                    note: "That legendary riff!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj",
+                        video: "https://www.youtube.com/watch?v=pAgnJDJN4VA",
+                        tutorial: "https://www.justinguitar.com/songs/ac-dc-back-in-black-chords-tabs-guitar-lesson-sb-327",
+                        tab: "https://tabs.ultimate-guitar.com/tab/acdc/back-in-black-tabs-212065"
+                    }
+                },
+                {
+                    title: "Rockin' in the Free World",
+                    artist: "Neil Young",
+                    chords: "Em - D - C - Em - A",
+                    note: "Powerful anthem",
+                    links: {
+                        spotify: "https://open.spotify.com/track/5YeTz1MexmO7hV1QCxDBjH",
+                        video: "https://www.youtube.com/watch?v=TnAgc1kgvLc",
+                        tutorial: "https://www.justinguitar.com/songs/neil-young-rockin-in-the-free-world",
+                        tab: "https://tabs.ultimate-guitar.com/tab/neil-young/rockin-in-the-free-world-chords-61802"
+                    }
+                }
             ],
             piano: [
-                { title: "Tiny Dancer", artist: "Elton John", chords: "C - F - G - Am", note: "Beautiful ballad" },
-                { title: "Lean on Me", artist: "Bill Withers", chords: "C - F - C - G", note: "Everyone knows this one!" }
+                {
+                    title: "Tiny Dancer",
+                    artist: "Elton John",
+                    chords: "C - F - G - Am",
+                    note: "Beautiful ballad",
+                    links: {
+                        spotify: "https://open.spotify.com/track/2TVxnKdb3tqe1nhQWwwZCO",
+                        video: "https://www.youtube.com/watch?v=yYcyacLRPNs",
+                        tutorial: "https://sheetmusicboss.com/2021/05/07/elton-john-tiny-dancer-piano-tutorial/",
+                        sheet: "https://musescore.com/user/7788266/scores/2925226"
+                    }
+                },
+                {
+                    title: "Lean on Me",
+                    artist: "Bill Withers",
+                    chords: "C - F - C - G",
+                    note: "Everyone knows this one!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/3M8o5wdDGW9FvLfSMnrQxe",
+                        video: "https://www.youtube.com/watch?v=fOZ-MySzAac",
+                        tutorial: "https://www.pianowithnate.com/All-Songs/lean-on-me",
+                        sheet: "https://musescore.com/user/2966376/scores/4000806"
+                    }
+                }
             ]
         },
         guitar: {
@@ -416,12 +658,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Highway to Hell", artist: "AC/DC", chords: "A - D - G - D - A", note: "Angus Young style!" },
-                { title: "Let It Be", artist: "The Beatles", chords: "C - G - Am - F", note: "Timeless classic" }
+                {
+                    title: "Highway to Hell",
+                    artist: "AC/DC",
+                    chords: "A - D - G - D - A",
+                    note: "Angus Young style!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/2zYzyRzz6pRmhPzyfMEC8s",
+                        video: "https://www.youtube.com/watch?v=l482T0yNkeo",
+                        tutorial: "https://www.justinguitar.com/songs/ac-dc-highway-to-hell-chords-tabs-guitar-lesson-sb-322",
+                        tab: "https://tabs.ultimate-guitar.com/tab/acdc/highway-to-hell-chords-139966"
+                    }
+                },
+                {
+                    title: "Let It Be",
+                    artist: "The Beatles",
+                    chords: "C - G - Am - F",
+                    note: "Timeless classic",
+                    links: {
+                        spotify: "https://open.spotify.com/track/7iN1s7xHE4ifF5povM6A48",
+                        video: "https://www.youtube.com/watch?v=QDYfEBY9NM4",
+                        tutorial: "https://www.theguitarlesson.com/guitar-lessons/let-it-be-guitar-lesson-beatles/",
+                        tab: "https://tabs.ultimate-guitar.com/tab/the-beatles/let-it-be-chords-17427"
+                    }
+                }
             ],
             piano: [
-                { title: "Your Song", artist: "Elton John", chords: "C - F - G - Am", note: "Romantic piano ballad" },
-                { title: "She's Got a Way", artist: "Billy Joel", chords: "G - D - C - Em", note: "Sweet love song" }
+                {
+                    title: "Your Song",
+                    artist: "Elton John",
+                    chords: "C - F - G - Am",
+                    note: "Romantic piano ballad",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4bRipXp3KZy8xtNMIqE2Ra",
+                        video: "https://www.youtube.com/watch?v=GlPlfCy1urI",
+                        tutorial: "https://www.noviscore.com/piano-sheet-music-your-song-elton-john",
+                        sheet: "https://musescore.com/user/736516/scores/4898783"
+                    }
+                },
+                {
+                    title: "She's Got a Way",
+                    artist: "Billy Joel",
+                    chords: "G - D - C - Em",
+                    note: "Sweet love song",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4YCHiR7pZBmdMMq3goiTZb",
+                        video: "https://www.youtube.com/watch?v=X_-CRwTgiNM",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/billy-joel/she-s-got-a-way",
+                        sheet: "https://musescore.com/song/she_s_got_a_way-1657558"
+                    }
+                }
             ]
         },
         guitar: {
@@ -478,12 +764,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Hey Jude", artist: "The Beatles", chords: "F - C - Bb - F", note: "That epic outro!" },
-                { title: "Band on the Run", artist: "Wings", chords: "Am - G - F - G", note: "Paul's masterpiece" }
+                {
+                    title: "Hey Jude",
+                    artist: "The Beatles",
+                    chords: "F - C - Bb - F",
+                    note: "That epic outro!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/0aym2LBJBk9DAYuHHutrIl",
+                        video: "https://www.youtube.com/watch?v=A_MjCqQoLLA",
+                        tutorial: "https://www.jonmaclennan.com/blog/hey-jude-guitar-lesson",
+                        tab: "https://tabs.ultimate-guitar.com/tab/the-beatles/hey-jude-chords-17275"
+                    }
+                },
+                {
+                    title: "Band on the Run",
+                    artist: "Wings",
+                    chords: "Am - G - F - G",
+                    note: "Paul's masterpiece",
+                    links: {
+                        spotify: "https://open.spotify.com/track/3KRGaK9zrOYbfqIWrzJfQr",
+                        video: "https://www.youtube.com/watch?v=FbwN8D1dFaE",
+                        tutorial: "https://www.justinguitar.com/songs/wings-band-on-the-run",
+                        tab: "https://tabs.ultimate-guitar.com/tab/paul-mccartney-wings/band-on-the-run-chords-20424"
+                    }
+                }
             ],
             piano: [
-                { title: "Don't Let the Sun Go Down on Me", artist: "Elton John", chords: "C - F - G - Am", note: "Powerful ballad" },
-                { title: "You've Got a Friend in Me", artist: "Randy Newman", chords: "C - G - F - C", note: "From Toy Story!" }
+                {
+                    title: "Don't Let the Sun Go Down on Me",
+                    artist: "Elton John",
+                    chords: "C - F - G - Am",
+                    note: "Powerful ballad",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4rPgCBV2JHrLrGFXmbYxi6",
+                        video: "https://www.youtube.com/watch?v=RsKqMNDoR4o",
+                        tutorial: "https://sheetmusicboss.com/elton-john-dont-let-the-sun-go-down-on-me/",
+                        sheet: "https://musescore.com/song/don_t_let_the_sun_go_down_on_me-1657815"
+                    }
+                },
+                {
+                    title: "You've Got a Friend in Me",
+                    artist: "Randy Newman",
+                    chords: "C - G - F - C",
+                    note: "From Toy Story!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4puDCFhn2Ctg1tUNwxFj6M",
+                        video: "https://www.youtube.com/watch?v=Zy4uiiy0qgA",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/randy-newman/you-ve-got-a-friend-in-me",
+                        sheet: "https://musescore.com/song/you_ve_got_a_friend_in_me-1657577"
+                    }
+                }
             ]
         },
         guitar: {
@@ -539,12 +869,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Stairway to Heaven", artist: "Led Zeppelin", chords: "Am - G - F - Am", note: "Legendary intro" },
-                { title: "Karma Police", artist: "Radiohead", chords: "Am - D - Em - G", note: "Haunting progression" }
+                {
+                    title: "Stairway to Heaven",
+                    artist: "Led Zeppelin",
+                    chords: "Am - G - F - Am",
+                    note: "Legendary intro",
+                    links: {
+                        spotify: "https://open.spotify.com/track/5CQ30WqJwcep0pYcV4AMNc",
+                        video: "https://www.youtube.com/watch?v=QkF3oxziUI4",
+                        tutorial: "https://www.justinguitar.com/songs/led-zeppelin-stairway-to-heaven-1-6-chords-tabs-guitar-lesson-st-314",
+                        tab: "https://tabs.ultimate-guitar.com/tab/led-zeppelin/stairway-to-heaven-tabs-9488"
+                    }
+                },
+                {
+                    title: "Karma Police",
+                    artist: "Radiohead",
+                    chords: "Am - D - Em - G",
+                    note: "Haunting progression",
+                    links: {
+                        spotify: "https://open.spotify.com/track/63OQupATfueTdZMWTxW03A",
+                        video: "https://www.youtube.com/watch?v=1uYWYWPc9HU",
+                        tutorial: "https://www.justinguitar.com/songs/radiohead-karma-police",
+                        tab: "https://tabs.ultimate-guitar.com/tab/radiohead/karma-police-chords-48534"
+                    }
+                }
             ],
             piano: [
-                { title: "Superstition", artist: "Stevie Wonder", chords: "Em - Bm (simplified)", note: "That funky clavinet!" },
-                { title: "I Am a Rock", artist: "Simon & Garfunkel", chords: "C - Dm - F - G", note: "60s folk rock" }
+                {
+                    title: "Superstition",
+                    artist: "Stevie Wonder",
+                    chords: "Em - Bm (simplified)",
+                    note: "That funky clavinet!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/1h2xVEoJORqrg71HocgqXd",
+                        video: "https://www.youtube.com/watch?v=0CFuCYNx-1g",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/stevie-wonder/superstition",
+                        sheet: "https://musescore.com/song/superstition-1657987"
+                    }
+                },
+                {
+                    title: "I Am a Rock",
+                    artist: "Simon & Garfunkel",
+                    chords: "C - Dm - F - G",
+                    note: "60s folk rock",
+                    links: {
+                        spotify: "https://open.spotify.com/track/4jURhOYSWYXgHVyK8tOonf",
+                        video: "https://www.youtube.com/watch?v=JKlSVNxLB-A",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/simon-garfunkel/i-am-a-rock",
+                        sheet: "https://musescore.com/song/i_am_a_rock-1657566"
+                    }
+                }
             ]
         },
         guitar: {
@@ -599,12 +973,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Purple Haze", artist: "Hendrix", chords: "E - G - A", note: "Use pentatonic licks!" },
-                { title: "Sunshine of Your Love", artist: "Cream", chords: "D - C - D", note: "Classic pentatonic riff" }
+                {
+                    title: "Purple Haze",
+                    artist: "Hendrix",
+                    chords: "E - G - A",
+                    note: "Use pentatonic licks!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/0wJoRiX5K5BxlqZTolB2LD",
+                        video: "https://www.youtube.com/watch?v=WGoDaYjdfSg",
+                        tutorial: "https://www.justinguitar.com/songs/jimi-hendrix-purple-haze-chords-tabs-guitar-lesson-st-331",
+                        tab: "https://tabs.ultimate-guitar.com/tab/jimi-hendrix/purple-haze-tabs-11715"
+                    }
+                },
+                {
+                    title: "Sunshine of Your Love",
+                    artist: "Cream",
+                    chords: "D - C - D",
+                    note: "Classic pentatonic riff",
+                    links: {
+                        spotify: "https://open.spotify.com/track/3d9qIdUq5Ac4RZZmMOGN8n",
+                        video: "https://www.youtube.com/watch?v=IDZqmF3zS04",
+                        tutorial: "https://www.justinguitar.com/songs/cream-sunshine-of-your-love",
+                        tab: "https://tabs.ultimate-guitar.com/tab/cream/sunshine-of-your-love-tabs-18614"
+                    }
+                }
             ],
             piano: [
-                { title: "Isn't She Lovely", artist: "Stevie Wonder", chords: "C#m - F# - B - E", note: "Simplified: Am - D - G - C" },
-                { title: "The Entertainer", artist: "Scott Joplin", chords: "C - F - G - C", note: "Ragtime fun with pentatonics!" }
+                {
+                    title: "Isn't She Lovely",
+                    artist: "Stevie Wonder",
+                    chords: "C#m - F# - B - E",
+                    note: "Simplified: Am - D - G - C",
+                    links: {
+                        spotify: "https://open.spotify.com/track/01h424WG38dgY34vkI3Yd0",
+                        video: "https://www.youtube.com/watch?v=b2WzocbSd2w",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/stevie-wonder/isn-t-she-lovely",
+                        sheet: "https://musescore.com/song/isn_t_she_lovely-1657986"
+                    }
+                },
+                {
+                    title: "The Entertainer",
+                    artist: "Scott Joplin",
+                    chords: "C - F - G - C",
+                    note: "Ragtime fun with pentatonics!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/5WqEZrJzhpYj0AhLvDgIUf",
+                        video: "https://www.youtube.com/watch?v=fPmruHc4S9Q",
+                        tutorial: "https://www.pianote.com/blog/the-entertainer-piano-tutorial/",
+                        sheet: "https://musescore.com/song/the_entertainer-1657547"
+                    }
+                }
             ]
         },
         guitar: {
@@ -656,12 +1074,56 @@ const CURRICULUM = [
         },
         songs: {
             guitar: [
-                { title: "Johnny B. Goode", artist: "Chuck Berry", chords: "A7 - D7 - E7", note: "12-bar blues classic!" },
-                { title: "Pride and Joy", artist: "SRV", chords: "E7 - A7 - B7", note: "Texas shuffle blues" }
+                {
+                    title: "Johnny B. Goode",
+                    artist: "Chuck Berry",
+                    chords: "A7 - D7 - E7",
+                    note: "12-bar blues classic!",
+                    links: {
+                        spotify: "https://open.spotify.com/track/2bZGDGS0hOoAQkFBz65hXW",
+                        video: "https://www.youtube.com/watch?v=ZFo8-JqzSCM",
+                        tutorial: "https://www.jonmaclennan.com/blog/johnny-b-goode-guitar-lesson",
+                        tab: "https://tabs.ultimate-guitar.com/tab/chuck-berry/johnny-b-goode-tabs-1515686"
+                    }
+                },
+                {
+                    title: "Pride and Joy",
+                    artist: "SRV",
+                    chords: "E7 - A7 - B7",
+                    note: "Texas shuffle blues",
+                    links: {
+                        spotify: "https://open.spotify.com/track/5MbCWvPs5VYpPGQGjdIV6U",
+                        video: "https://www.youtube.com/watch?v=0vo23H9J8o8",
+                        tutorial: "https://www.justinguitar.com/songs/stevie-ray-vaughan-pride-and-joy",
+                        tab: "https://tabs.ultimate-guitar.com/tab/stevie-ray-vaughan/pride-and-joy-tabs-152054"
+                    }
+                }
             ],
             piano: [
-                { title: "Georgia on My Mind", artist: "Ray Charles", chords: "F - Am7 - Dm7 - G7", note: "Soulful 7th chords" },
-                { title: "Just the Way You Are", artist: "Billy Joel", chords: "D - Gmaj7 - Bm - Em7", note: "Smooth jazz pop" }
+                {
+                    title: "Georgia on My Mind",
+                    artist: "Ray Charles",
+                    chords: "F - Am7 - Dm7 - G7",
+                    note: "Soulful 7th chords",
+                    links: {
+                        spotify: "https://open.spotify.com/track/1fhFirJyT5STGVK7rlL4av",
+                        video: "https://www.youtube.com/watch?v=fRgWBN8yt_E",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/ray-charles/georgia-on-my-mind",
+                        sheet: "https://musescore.com/song/georgia_on_my_mind-1657567"
+                    }
+                },
+                {
+                    title: "Just the Way You Are",
+                    artist: "Billy Joel",
+                    chords: "D - Gmaj7 - Bm - Em7",
+                    note: "Smooth jazz pop",
+                    links: {
+                        spotify: "https://open.spotify.com/track/55skE0fGKCJ6VCsaVHqoB1",
+                        video: "https://www.youtube.com/watch?v=HaA3YZ6QdJU",
+                        tutorial: "https://www.onlinepianist.com/piano-songs/billy-joel/just-the-way-you-are",
+                        sheet: "https://musescore.com/song/just_the_way_you_are-1657559"
+                    }
+                }
             ]
         },
         guitar: {

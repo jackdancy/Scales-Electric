@@ -823,16 +823,28 @@ function renderWeekContent(player) {
         <div class="week-section songs-section">
             <h4>Songs You Can Play Now!</h4>
             <div class="songs-list">
-                ${songs.map(song => `
+                ${songs.map(song => {
+                    const links = song.links || {};
+                    const linkButtons = [];
+                    if (links.spotify) linkButtons.push(`<a href="${links.spotify}" target="_blank" class="song-link spotify" title="Listen on Spotify">🎧</a>`);
+                    if (links.video) linkButtons.push(`<a href="${links.video}" target="_blank" class="song-link video" title="Watch Video">▶️</a>`);
+                    if (links.tutorial) linkButtons.push(`<a href="${links.tutorial}" target="_blank" class="song-link tutorial" title="Tutorial">📚</a>`);
+                    if (links.tab) linkButtons.push(`<a href="${links.tab}" target="_blank" class="song-link tab" title="Guitar Tab">🎸</a>`);
+                    if (links.sheet) linkButtons.push(`<a href="${links.sheet}" target="_blank" class="song-link sheet" title="Sheet Music">🎹</a>`);
+
+                    return `
                     <div class="song-item">
                         <div class="song-header">
                             <span class="song-title">${song.title}</span>
                             <span class="song-artist">by ${song.artist}</span>
                         </div>
-                        <div class="song-chords">${song.chords}</div>
+                        <div class="song-details">
+                            <div class="song-chords">${song.chords}</div>
+                            ${linkButtons.length > 0 ? `<div class="song-links">${linkButtons.join('')}</div>` : ''}
+                        </div>
                         ${song.note ? `<div class="song-note">${song.note}</div>` : ''}
                     </div>
-                `).join('')}
+                `}).join('')}
             </div>
         </div>
     ` : '';
