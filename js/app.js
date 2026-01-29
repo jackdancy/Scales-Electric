@@ -1250,35 +1250,57 @@ function renderGuitarScaleInline(container, name) {
         svg.appendChild(label);
     }
 
-    // Draw scale positions
+    // Draw scale positions with finger numbers
     scale.positions.forEach((pos, idx) => {
         const stringY = 30 + (6 - pos.string) * 22;
-        const fretX = 20 + (pos.fret - startFret + 0.5) * 40;
+        const fretX = pos.fret === 0 ? 10 : 20 + (pos.fret - startFret + 0.5) * 40;
 
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circle.setAttribute('cx', fretX);
-        circle.setAttribute('cy', stringY);
-        circle.setAttribute('r', '10');
-        circle.setAttribute('fill', idx === 0 ? '#e74c3c' : '#3498db');
-        svg.appendChild(circle);
+        // For open strings, draw an open circle at the left
+        if (pos.fret === 0 || pos.finger === 0) {
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', '10');
+            circle.setAttribute('cy', stringY);
+            circle.setAttribute('r', '8');
+            circle.setAttribute('fill', 'none');
+            circle.setAttribute('stroke', idx === 0 ? '#e74c3c' : '#2ecc71');
+            circle.setAttribute('stroke-width', '2');
+            svg.appendChild(circle);
 
-        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        text.setAttribute('x', fretX);
-        text.setAttribute('y', stringY + 4);
-        text.setAttribute('text-anchor', 'middle');
-        text.setAttribute('fill', 'white');
-        text.setAttribute('font-size', '9');
-        text.setAttribute('font-weight', 'bold');
-        text.textContent = pos.note;
-        svg.appendChild(text);
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', '10');
+            text.setAttribute('y', stringY + 3);
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('fill', idx === 0 ? '#e74c3c' : '#2ecc71');
+            text.setAttribute('font-size', '8');
+            text.setAttribute('font-weight', 'bold');
+            text.textContent = '0';
+            svg.appendChild(text);
+        } else {
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', fretX);
+            circle.setAttribute('cy', stringY);
+            circle.setAttribute('r', '10');
+            circle.setAttribute('fill', idx === 0 ? '#e74c3c' : '#3498db');
+            svg.appendChild(circle);
+
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', fretX);
+            text.setAttribute('y', stringY + 4);
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('fill', 'white');
+            text.setAttribute('font-size', '11');
+            text.setAttribute('font-weight', 'bold');
+            text.textContent = pos.finger !== undefined ? pos.finger : pos.note;
+            svg.appendChild(text);
+        }
     });
 
     container.appendChild(svg);
 
-    // Add notes info
+    // Add notes info with finger legend
     const notes = document.createElement('p');
     notes.className = 'fingering-info';
-    notes.textContent = scale.positions.map(p => p.note).join(' - ');
+    notes.innerHTML = scale.positions.map(p => p.note).join(' - ') + '<br><small>Fingers: 1=Index, 2=Middle, 3=Ring, 4=Pinky, 0=Open</small>';
     container.appendChild(notes);
 }
 
