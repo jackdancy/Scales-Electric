@@ -150,18 +150,9 @@ const GUITAR_CHORDS = {
 
 // ==================== GUITAR SCALE DIAGRAMS ====================
 // Finger numbers: 1=Index, 2=Middle, 3=Ring, 4=Pinky, 0=Open string
+// Position-based curriculum: learn patterns, then move them anywhere
 const GUITAR_SCALES = {
-    // Week 1
-    'C Major Scale (Open Position)': {
-        startFret: 0,
-        positions: [
-            {string: 5, fret: 3, note: 'C', finger: 2}, {string: 5, fret: 5, note: 'D', finger: 4},
-            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 3, note: 'F', finger: 2},
-            {string: 4, fret: 5, note: 'G', finger: 4}, {string: 3, fret: 2, note: 'A', finger: 1},
-            {string: 3, fret: 4, note: 'B', finger: 3}, {string: 3, fret: 5, note: 'C', finger: 4}
-        ]
-    },
-    // Week 2
+    // Week 1 - G Major Open Position (Home Base)
     'G Major Scale (Open Position)': {
         startFret: 0,
         positions: [
@@ -171,26 +162,138 @@ const GUITAR_SCALES = {
             {string: 4, fret: 4, note: 'F#', finger: 3}, {string: 3, fret: 0, note: 'G', finger: 0}
         ]
     },
-    // Week 3
-    'D Major Scale (Open Position)': {
+    // Week 2 - E Minor Pentatonic (The Essential Improv Scale)
+    'E Minor Pentatonic (Box 1)': {
         startFret: 0,
         positions: [
+            {string: 6, fret: 0, note: 'E', finger: 0}, {string: 6, fret: 3, note: 'G', finger: 3},
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 2, note: 'B', finger: 2},
+            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 2},
+            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 3, fret: 2, note: 'A', finger: 2}
+        ]
+    },
+    // Week 3 - G Major & Em Pentatonic Connection (Relative Major/Minor)
+    'G Major & Em Pentatonic Connection': {
+        startFret: 0,
+        positions: [
+            // Em pentatonic notes highlighted - they overlap with G Major!
+            {string: 6, fret: 0, note: 'E', finger: 0}, {string: 6, fret: 3, note: 'G', finger: 2},
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 2, note: 'B', finger: 1},
             {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 1},
-            {string: 4, fret: 4, note: 'F#', finger: 3}, {string: 3, fret: 0, note: 'G', finger: 0},
-            {string: 3, fret: 2, note: 'A', finger: 1}, {string: 3, fret: 4, note: 'B', finger: 3},
-            {string: 2, fret: 2, note: 'C#', finger: 1}, {string: 2, fret: 3, note: 'D', finger: 2}
+            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 3, fret: 2, note: 'A', finger: 2}
         ]
     },
-    // Week 4
-    'C-G-D Chord Transitions': {
+    // Week 4 - A Minor Pentatonic Open Position
+    'A Minor Pentatonic (Open Position)': {
         startFret: 0,
         positions: [
-            {string: 5, fret: 3, note: 'C', finger: 3}, {string: 4, fret: 2, note: 'E', finger: 2},
-            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 6, fret: 3, note: 'G', finger: 2},
-            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 4, fret: 0, note: 'D', finger: 0}
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 3, note: 'C', finger: 3},
+            {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 2},
+            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 3, fret: 2, note: 'A', finger: 2},
+            {string: 2, fret: 0, note: 'B', finger: 0}, {string: 2, fret: 1, note: 'C', finger: 1}
         ]
     },
-    // Week 5
+    // Week 5 - Major Scale Pattern 1 (E-Shape) - THE moveable pattern
+    'Major Scale Pattern 1 (E-Shape)': {
+        startFret: 3,  // Shown as G Major at fret 3, but moveable!
+        positions: [
+            {string: 6, fret: 3, note: 'G', finger: 2}, {string: 6, fret: 5, note: 'A', finger: 4},
+            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 3, note: 'C', finger: 2},
+            {string: 5, fret: 5, note: 'D', finger: 4}, {string: 4, fret: 2, note: 'E', finger: 1},
+            {string: 4, fret: 4, note: 'F#', finger: 3}, {string: 4, fret: 5, note: 'G', finger: 4}
+        ]
+    },
+    // Week 6 - Minor Pentatonic Box 1 (Moveable)
+    'Minor Pentatonic Box 1 (Moveable)': {
+        startFret: 5,  // Shown as Am at fret 5, but moveable!
+        positions: [
+            {string: 6, fret: 5, note: 'A', finger: 1}, {string: 6, fret: 8, note: 'C', finger: 4},
+            {string: 5, fret: 5, note: 'D', finger: 1}, {string: 5, fret: 7, note: 'E', finger: 3},
+            {string: 4, fret: 5, note: 'G', finger: 1}, {string: 4, fret: 7, note: 'A', finger: 3},
+            {string: 3, fret: 5, note: 'C', finger: 1}, {string: 3, fret: 7, note: 'D', finger: 3}
+        ]
+    },
+    // Week 7 - Major Scale Pattern 2 (A-Shape) - Root on 5th string
+    'Major Scale Pattern 2 (A-Shape)': {
+        startFret: 3,  // Shown as C Major at fret 3, but moveable!
+        positions: [
+            {string: 5, fret: 3, note: 'C', finger: 1}, {string: 5, fret: 5, note: 'D', finger: 3},
+            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 3, note: 'F', finger: 2},
+            {string: 4, fret: 5, note: 'G', finger: 4}, {string: 3, fret: 2, note: 'A', finger: 1},
+            {string: 3, fret: 4, note: 'B', finger: 3}, {string: 3, fret: 5, note: 'C', finger: 4}
+        ]
+    },
+    // Week 8 - Connecting Positions 1 & 2
+    'Connecting Positions 1 & 2': {
+        startFret: 2,  // Shows how Position 1 and 2 link in G Major
+        positions: [
+            // Position 1 notes (lower)
+            {string: 6, fret: 3, note: 'G', finger: 2}, {string: 6, fret: 5, note: 'A', finger: 4},
+            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 3, note: 'C', finger: 2},
+            // Transition zone - shared notes
+            {string: 5, fret: 5, note: 'D', finger: 4}, {string: 4, fret: 2, note: 'E', finger: 1},
+            // Position 2 notes (higher)
+            {string: 4, fret: 4, note: 'F#', finger: 3}, {string: 4, fret: 5, note: 'G', finger: 4}
+        ]
+    },
+    // Week 9 - Pentatonic Boxes 1 & 2 Connected
+    'Pentatonic Boxes 1 & 2 Connected': {
+        startFret: 5,  // Am Pentatonic across two boxes
+        positions: [
+            // Box 1 notes
+            {string: 6, fret: 5, note: 'A', finger: 1}, {string: 6, fret: 8, note: 'C', finger: 4},
+            {string: 5, fret: 5, note: 'D', finger: 1}, {string: 5, fret: 7, note: 'E', finger: 3},
+            // Transition/overlap
+            {string: 4, fret: 5, note: 'G', finger: 1}, {string: 4, fret: 7, note: 'A', finger: 3},
+            // Box 2 notes
+            {string: 3, fret: 5, note: 'C', finger: 1}, {string: 3, fret: 7, note: 'D', finger: 3},
+            {string: 2, fret: 5, note: 'E', finger: 1}, {string: 2, fret: 8, note: 'G', finger: 4}
+        ]
+    },
+    // Week 10 - Natural Minor Scales (Am, Em, Dm)
+    'Natural Minor Scales (Am, Em, Dm)': {
+        startFret: 0,  // Shown as Am in open position
+        positions: [
+            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 2, note: 'B', finger: 1},
+            {string: 5, fret: 3, note: 'C', finger: 2}, {string: 4, fret: 0, note: 'D', finger: 0},
+            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 3, note: 'F', finger: 2},
+            {string: 3, fret: 0, note: 'G', finger: 0}, {string: 3, fret: 2, note: 'A', finger: 1}
+        ]
+    },
+    // Week 11 - Blues Scale
+    'Blues Scale (A)': {
+        startFret: 5,
+        positions: [
+            {string: 6, fret: 5, note: 'A', finger: 1}, {string: 6, fret: 8, note: 'C', finger: 4},
+            {string: 5, fret: 5, note: 'D', finger: 1}, {string: 5, fret: 6, note: 'Eb', finger: 2},
+            {string: 5, fret: 7, note: 'E', finger: 3}, {string: 4, fret: 5, note: 'G', finger: 1},
+            {string: 4, fret: 7, note: 'A', finger: 3}
+        ]
+    },
+    // Week 12 - Full Neck Navigation (showing key positions)
+    'Full Neck Navigation': {
+        startFret: 0,  // Overview showing root notes across the neck in A
+        positions: [
+            // Root notes in A across the neck
+            {string: 5, fret: 0, note: 'A', finger: 0},  // Open A
+            {string: 6, fret: 5, note: 'A', finger: 1},  // Position 1 root
+            {string: 4, fret: 7, note: 'A', finger: 3},  // Octave
+            {string: 5, fret: 12, note: 'A', finger: 1}, // Octave
+            {string: 3, fret: 2, note: 'A', finger: 1},  // Another octave
+            {string: 2, fret: 5, note: 'A', finger: 1}   // Higher octave
+        ]
+    },
+
+    // ===== Legacy scales for backward compatibility =====
+    'C Major Scale (Open Position)': {
+        startFret: 0,
+        positions: [
+            {string: 5, fret: 3, note: 'C', finger: 2}, {string: 5, fret: 5, note: 'D', finger: 4},
+            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 3, note: 'F', finger: 2},
+            {string: 4, fret: 5, note: 'G', finger: 4}, {string: 3, fret: 2, note: 'A', finger: 1},
+            {string: 3, fret: 4, note: 'B', finger: 3}, {string: 3, fret: 5, note: 'C', finger: 4}
+        ]
+    },
     'A Minor Scale (Natural)': {
         startFret: 0,
         positions: [
@@ -200,7 +303,6 @@ const GUITAR_SCALES = {
             {string: 3, fret: 0, note: 'G', finger: 0}, {string: 3, fret: 2, note: 'A', finger: 1}
         ]
     },
-    // Week 6
     'E Minor Scale (Natural)': {
         startFret: 0,
         positions: [
@@ -210,37 +312,6 @@ const GUITAR_SCALES = {
             {string: 4, fret: 0, note: 'D', finger: 0}, {string: 4, fret: 2, note: 'E', finger: 1}
         ]
     },
-    // Week 7
-    'A Major Scale (Open Position)': {
-        startFret: 0,
-        positions: [
-            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 2, note: 'B', finger: 1},
-            {string: 5, fret: 4, note: 'C#', finger: 3}, {string: 4, fret: 0, note: 'D', finger: 0},
-            {string: 4, fret: 2, note: 'E', finger: 1}, {string: 4, fret: 4, note: 'F#', finger: 3},
-            {string: 3, fret: 1, note: 'G#', finger: 1}, {string: 3, fret: 2, note: 'A', finger: 2}
-        ]
-    },
-    // Week 8
-    'E Major Scale (Open Position)': {
-        startFret: 0,
-        positions: [
-            {string: 6, fret: 0, note: 'E', finger: 0}, {string: 6, fret: 2, note: 'F#', finger: 1},
-            {string: 6, fret: 4, note: 'G#', finger: 3}, {string: 5, fret: 0, note: 'A', finger: 0},
-            {string: 5, fret: 2, note: 'B', finger: 1}, {string: 5, fret: 4, note: 'C#', finger: 3},
-            {string: 4, fret: 1, note: 'D#', finger: 1}, {string: 4, fret: 2, note: 'E', finger: 2}
-        ]
-    },
-    // Week 9
-    'F Major Scale': {
-        startFret: 0,
-        positions: [
-            {string: 6, fret: 1, note: 'F', finger: 1}, {string: 6, fret: 3, note: 'G', finger: 3},
-            {string: 5, fret: 0, note: 'A', finger: 0}, {string: 5, fret: 1, note: 'Bb', finger: 1},
-            {string: 5, fret: 3, note: 'C', finger: 3}, {string: 4, fret: 0, note: 'D', finger: 0},
-            {string: 4, fret: 2, note: 'E', finger: 2}, {string: 4, fret: 3, note: 'F', finger: 3}
-        ]
-    },
-    // Week 10
     'D Minor Scale (Natural)': {
         startFret: 0,
         positions: [
@@ -248,25 +319,6 @@ const GUITAR_SCALES = {
             {string: 4, fret: 3, note: 'F', finger: 2}, {string: 3, fret: 0, note: 'G', finger: 0},
             {string: 3, fret: 2, note: 'A', finger: 1}, {string: 3, fret: 3, note: 'Bb', finger: 2},
             {string: 2, fret: 1, note: 'C', finger: 1}, {string: 2, fret: 3, note: 'D', finger: 3}
-        ]
-    },
-    // Week 11
-    'A Minor Pentatonic (Box 1)': {
-        startFret: 5,
-        positions: [
-            {string: 6, fret: 5, note: 'A', finger: 1}, {string: 6, fret: 8, note: 'C', finger: 4},
-            {string: 5, fret: 5, note: 'D', finger: 1}, {string: 5, fret: 7, note: 'E', finger: 3},
-            {string: 4, fret: 5, note: 'G', finger: 1}, {string: 4, fret: 7, note: 'A', finger: 3}
-        ]
-    },
-    // Week 12
-    'Blues Scale (A)': {
-        startFret: 5,
-        positions: [
-            {string: 6, fret: 5, note: 'A', finger: 1}, {string: 6, fret: 8, note: 'C', finger: 4},
-            {string: 5, fret: 5, note: 'D', finger: 1}, {string: 5, fret: 6, note: 'Eb', finger: 2},
-            {string: 5, fret: 7, note: 'E', finger: 3}, {string: 4, fret: 5, note: 'G', finger: 1},
-            {string: 4, fret: 7, note: 'A', finger: 3}
         ]
     }
 };
