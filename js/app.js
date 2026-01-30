@@ -900,6 +900,20 @@ function renderWeekContent(player) {
     const playerDescription = week.description.split(player === 'guitar' ? 'Piano:' : 'Guitar:')[0]
         .replace(/^(Guitar:|Piano:)\s*/i, '').trim();
 
+    // Get player-specific week notes
+    const weekNotes = week.weekNotes?.[player] || '';
+    const weekNotesSection = weekNotes ? `
+        <details class="week-notes-section">
+            <summary class="week-notes-toggle">
+                <span class="toggle-icon">📖</span> What You're Learning This Week
+                <span class="toggle-arrow">▼</span>
+            </summary>
+            <div class="week-notes-content">
+                ${weekNotes.split('\n').map(line => line.trim() ? `<p>${line}</p>` : '').join('')}
+            </div>
+        </details>
+    ` : '';
+
     const container = document.getElementById(`${player}-week-content`);
     container.innerHTML = `
         <div class="week-header-info">
@@ -916,6 +930,7 @@ function renderWeekContent(player) {
             </div>
         </div>
         <p class="week-description">${playerDescription}</p>
+        ${weekNotesSection}
         ${practiceTimerSection}
         ${metronomeSection}
         <div class="week-items">
