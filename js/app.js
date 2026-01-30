@@ -891,12 +891,21 @@ function renderWeekContent(player) {
         </div>
     ` : '';
 
+    // Generate player-specific title from scale name
+    const scaleName = data.scale.name;
+    // Simplify the scale name for the title (remove parenthetical details)
+    const playerTitle = scaleName.replace(/\s*\([^)]*\)\s*/g, '').trim();
+
+    // Player-specific description
+    const playerDescription = week.description.split(player === 'guitar' ? 'Piano:' : 'Guitar:')[0]
+        .replace(/^(Guitar:|Piano:)\s*/i, '').trim();
+
     const container = document.getElementById(`${player}-week-content`);
     container.innerHTML = `
         <div class="week-header-info">
             <div class="week-title-group">
                 <span class="week-number">Week ${weekNum} of 12</span>
-                <h3 class="week-title">${week.title}</h3>
+                <h3 class="week-title">${playerTitle}</h3>
             </div>
             <div class="progress-ring">
                 <svg viewBox="0 0 36 36">
@@ -906,7 +915,7 @@ function renderWeekContent(player) {
                 <span class="progress-text">${progress.percent}%</span>
             </div>
         </div>
-        <p class="week-description">${week.description}</p>
+        <p class="week-description">${playerDescription}</p>
         ${practiceTimerSection}
         ${metronomeSection}
         <div class="week-items">
