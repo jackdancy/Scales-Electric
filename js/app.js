@@ -1723,39 +1723,34 @@ function renderJourneyProgress() {
         const guitarProgress = getWeekProgress('guitar', week);
         const pianoProgress = getWeekProgress('piano', week);
         const isCurrentWeek = week === state.currentWeek;
-        const isLocked = week > state.currentWeek;
 
         const segment = document.createElement('div');
-        segment.className = `week-segment ${isCurrentWeek ? 'current' : ''} ${isLocked ? 'locked' : ''}`;
+        segment.className = `week-segment ${isCurrentWeek ? 'current' : ''}`;
         segment.dataset.week = week;
 
         // Guitar half (top)
         const guitarHalf = document.createElement('div');
         guitarHalf.className = 'segment-half guitar';
-        if (!isLocked) {
-            if (guitarProgress.isFullyAced) {
-                guitarHalf.classList.add('complete');
-            } else if (guitarProgress.percent > 0) {
-                guitarHalf.classList.add('partial');
-                // Calculate aced-only percentage
-                const acedPercent = Math.round((guitarProgress.completed / guitarProgress.total) * 100);
-                guitarHalf.style.setProperty('--aced-progress', acedPercent + '%');
-                guitarHalf.style.setProperty('--progress', guitarProgress.percent + '%');
-            }
+        if (guitarProgress.isFullyAced) {
+            guitarHalf.classList.add('complete');
+        } else if (guitarProgress.percent > 0) {
+            guitarHalf.classList.add('partial');
+            // Calculate aced-only percentage
+            const acedPercent = Math.round((guitarProgress.completed / guitarProgress.total) * 100);
+            guitarHalf.style.setProperty('--aced-progress', acedPercent + '%');
+            guitarHalf.style.setProperty('--progress', guitarProgress.percent + '%');
         }
 
         // Piano half (bottom)
         const pianoHalf = document.createElement('div');
         pianoHalf.className = 'segment-half piano';
-        if (!isLocked) {
-            if (pianoProgress.isFullyAced) {
-                pianoHalf.classList.add('complete');
-            } else if (pianoProgress.percent > 0) {
-                pianoHalf.classList.add('partial');
-                const acedPercent = Math.round((pianoProgress.completed / pianoProgress.total) * 100);
-                pianoHalf.style.setProperty('--aced-progress', acedPercent + '%');
-                pianoHalf.style.setProperty('--progress', pianoProgress.percent + '%');
-            }
+        if (pianoProgress.isFullyAced) {
+            pianoHalf.classList.add('complete');
+        } else if (pianoProgress.percent > 0) {
+            pianoHalf.classList.add('partial');
+            const acedPercent = Math.round((pianoProgress.completed / pianoProgress.total) * 100);
+            pianoHalf.style.setProperty('--aced-progress', acedPercent + '%');
+            pianoHalf.style.setProperty('--progress', pianoProgress.percent + '%');
         }
 
         segment.appendChild(guitarHalf);
@@ -1763,11 +1758,9 @@ function renderJourneyProgress() {
 
         // Click to navigate to week
         segment.addEventListener('click', () => {
-            if (!isLocked) {
-                state.currentWeek = week;
-                saveState();
-                render();
-            }
+            state.currentWeek = week;
+            saveState();
+            render();
         });
 
         journeyBar.appendChild(segment);
