@@ -90,6 +90,148 @@ const WEEKLY_PRACTICE_GOAL = 30 * 60; // 30 minutes in seconds
 // Common emojis for notes
 const EMOJI_PICKER = ['😊', '😅', '🤔', '😤', '🎉', '⭐', '💪', '👍', '👎', '🔥', '❄️', '🐌', '🚀', '✅', '❌', '⚠️', '💡', '🎯', '🎵', '🎸', '🎹', '👆', '👇', '🔄', '⏰'];
 
+// Famous Songs Modal
+function openFamousSongsModal(weekNum) {
+    const weekSongs = FAMOUS_SONGS[weekNum];
+    if (!weekSongs) return;
+
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('famous-songs-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'famous-songs-modal';
+        modal.className = 'famous-songs-modal';
+        modal.innerHTML = `
+            <div class="famous-songs-modal-content">
+                <button class="famous-songs-modal-close">&times;</button>
+                <div class="famous-songs-modal-header">
+                    <h3 class="famous-songs-modal-title"></h3>
+                    <p class="famous-songs-modal-desc"></p>
+                </div>
+                <div class="famous-songs-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="rock">Rock</button>
+                    <button class="filter-btn" data-filter="rnb">R&B/Soul</button>
+                    <button class="filter-btn" data-filter="rap">Rap/Hip-Hop</button>
+                    <button class="filter-btn" data-filter="pop">Pop</button>
+                </div>
+                <div class="famous-songs-decade-nav">
+                    <span class="decade-label">Era:</span>
+                    <button class="decade-btn active" data-decade="all">All</button>
+                    <button class="decade-btn" data-decade="50s-60s">50s-60s</button>
+                    <button class="decade-btn" data-decade="70s-80s">70s-80s</button>
+                    <button class="decade-btn" data-decade="90s-00s">90s-00s</button>
+                    <button class="decade-btn" data-decade="10s-now">2010s+</button>
+                </div>
+                <div class="famous-songs-list"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Close button
+        modal.querySelector('.famous-songs-modal-close').addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+
+        // Click outside to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    }
+
+    // Store current week data for filtering
+    modal.dataset.weekNum = weekNum;
+
+    // Populate modal
+    modal.querySelector('.famous-songs-modal-title').textContent = weekSongs.title;
+    modal.querySelector('.famous-songs-modal-desc').textContent = weekSongs.description;
+
+    // Render songs with current filters
+    renderFamousSongs(modal, weekSongs.songs, 'all', 'all');
+
+    // Setup filter buttons
+    modal.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.onclick = () => {
+            modal.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const genre = btn.dataset.filter;
+            const decade = modal.querySelector('.decade-btn.active').dataset.decade;
+            renderFamousSongs(modal, weekSongs.songs, genre, decade);
+        };
+    });
+
+    // Setup decade buttons
+    modal.querySelectorAll('.decade-btn').forEach(btn => {
+        btn.onclick = () => {
+            modal.querySelectorAll('.decade-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const decade = btn.dataset.decade;
+            const genre = modal.querySelector('.filter-btn.active').dataset.filter;
+            renderFamousSongs(modal, weekSongs.songs, genre, decade);
+        };
+    });
+
+    // Reset filters when opening
+    modal.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    modal.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+    modal.querySelectorAll('.decade-btn').forEach(b => b.classList.remove('active'));
+    modal.querySelector('.decade-btn[data-decade="all"]').classList.add('active');
+
+    // Show modal
+    modal.classList.add('show');
+}
+
+function renderFamousSongs(modal, songs, genreFilter, decadeFilter) {
+    const listContainer = modal.querySelector('.famous-songs-list');
+
+    // Filter songs
+    let filtered = songs.filter(song => {
+        // Genre filter
+        if (genreFilter !== 'all') {
+            const genre = song.genre.toLowerCase();
+            if (genreFilter === 'rock' && !genre.includes('rock') && !genre.includes('metal') && !genre.includes('grunge') && !genre.includes('alternative')) return false;
+            if (genreFilter === 'rnb' && !genre.includes('r&b') && !genre.includes('soul') && !genre.includes('funk') && !genre.includes('neo-soul') && !genre.includes('jazz')) return false;
+            if (genreFilter === 'rap' && !genre.includes('rap') && !genre.includes('hip-hop') && !genre.includes('hip hop')) return false;
+            if (genreFilter === 'pop' && !genre.includes('pop') && !genre.includes('disco') && !genre.includes('edm')) return false;
+        }
+
+        // Decade filter
+        if (decadeFilter !== 'all') {
+            const year = song.year;
+            if (decadeFilter === '50s-60s' && (year < 1950 || year > 1969)) return false;
+            if (decadeFilter === '70s-80s' && (year < 1970 || year > 1989)) return false;
+            if (decadeFilter === '90s-00s' && (year < 1990 || year > 2009)) return false;
+            if (decadeFilter === '10s-now' && year < 2010) return false;
+        }
+
+        return true;
+    });
+
+    if (filtered.length === 0) {
+        listContainer.innerHTML = '<p class="no-songs">No songs match these filters. Try a different combination!</p>';
+        return;
+    }
+
+    // Sort by year
+    filtered.sort((a, b) => a.year - b.year);
+
+    listContainer.innerHTML = filtered.map(song => `
+        <div class="famous-song-item">
+            <div class="song-main">
+                <span class="song-title">${song.title}</span>
+                <span class="song-artist">${song.artist}</span>
+            </div>
+            <div class="song-meta">
+                <span class="song-year">${song.year}</span>
+                <span class="song-genre">${song.genre}</span>
+            </div>
+            <div class="song-chords">${song.chords}</div>
+        </div>
+    `).join('');
+}
+
 // Load state from localStorage
 function loadState() {
     const saved = localStorage.getItem('scalesElectricState_v3');
@@ -902,6 +1044,7 @@ function renderWeekContent(player) {
 
     // Get player-specific week notes
     const weekNotes = week.weekNotes?.[player] || '';
+    const hasFamousSongs = FAMOUS_SONGS && FAMOUS_SONGS[weekNum];
     const weekNotesSection = weekNotes ? `
         <details class="week-notes-section">
             <summary class="week-notes-toggle">
@@ -910,6 +1053,15 @@ function renderWeekContent(player) {
             </summary>
             <div class="week-notes-content">
                 ${weekNotes.split('\n').map(line => line.trim() ? `<p>${line}</p>` : '').join('')}
+                ${hasFamousSongs ? `
+                <div class="famous-songs-cta">
+                    <button class="famous-songs-btn" data-week="${weekNum}">
+                        <span class="btn-icon">🎵</span>
+                        <span class="btn-text">See 20+ Famous Songs You Can Play!</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+                ` : ''}
             </div>
         </details>
     ` : '';
@@ -1021,6 +1173,15 @@ function renderWeekContent(player) {
             const p = approveBtn.dataset.player;
             const w = parseInt(approveBtn.dataset.week);
             toggleWeekApproval(p, w);
+        });
+    }
+
+    // Setup famous songs button
+    const famousSongsBtn = container.querySelector('.famous-songs-btn');
+    if (famousSongsBtn) {
+        famousSongsBtn.addEventListener('click', () => {
+            const w = parseInt(famousSongsBtn.dataset.week);
+            openFamousSongsModal(w);
         });
     }
 }

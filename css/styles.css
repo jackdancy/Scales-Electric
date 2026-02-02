@@ -2168,3 +2168,357 @@ footer {
 .player-card::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
+/* Famous Songs Button */
+.famous-songs-cta {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.famous-songs-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.25rem;
+    border: 2px solid var(--token-color);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.15), rgba(241, 196, 15, 0.05));
+    color: var(--token-color);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.famous-songs-btn:hover {
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.25), rgba(241, 196, 15, 0.15));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(241, 196, 15, 0.25);
+}
+
+.famous-songs-btn .btn-icon {
+    font-size: 1.3rem;
+}
+
+.famous-songs-btn .btn-text {
+    flex: 1;
+    text-align: left;
+}
+
+.famous-songs-btn .btn-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.famous-songs-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* Famous Songs Modal */
+.famous-songs-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 1rem;
+}
+
+.famous-songs-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.famous-songs-modal-content {
+    background: var(--bg-card);
+    border-radius: 20px;
+    max-width: 650px;
+    width: 100%;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--section-border);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+}
+
+.famous-songs-modal.show .famous-songs-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.famous-songs-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.famous-songs-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.famous-songs-modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--section-border);
+    background: linear-gradient(135deg, rgba(241, 196, 15, 0.1), transparent);
+}
+
+.famous-songs-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: var(--token-color);
+    margin-bottom: 0.5rem;
+    padding-right: 2.5rem;
+}
+
+.famous-songs-modal-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Filters */
+.famous-songs-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--section-border);
+    border-radius: 20px;
+    background: var(--bg-section);
+    color: var(--text-muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+}
+
+.filter-btn.active {
+    background: var(--token-color);
+    color: #1a1a2e;
+    border-color: var(--token-color);
+    font-weight: 600;
+}
+
+/* Decade navigation */
+.famous-songs-decade-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--section-border);
+}
+
+.decade-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-right: 0.25rem;
+}
+
+.decade-btn {
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.decade-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+}
+
+.decade-btn.active {
+    background: rgba(155, 89, 182, 0.3);
+    color: #bb8fce;
+    border-color: rgba(155, 89, 182, 0.5);
+}
+
+/* Songs List */
+.famous-songs-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.famous-song-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.25rem 1rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.famous-song-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.famous-song-item:last-child {
+    margin-bottom: 0;
+}
+
+.song-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.famous-song-item .song-title {
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.famous-song-item .song-artist {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.song-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+}
+
+.song-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    color: var(--token-color);
+    letter-spacing: 1px;
+}
+
+.song-genre {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.15rem 0.5rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.song-chords {
+    grid-column: 1 / -1;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    color: #1abc9c;
+    background: rgba(26, 188, 156, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+.no-songs {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Famous Songs Modal - Scrollbar */
+.famous-songs-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.famous-songs-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.famous-songs-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
+.famous-songs-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Responsive - Famous Songs Modal */
+@media (max-width: 600px) {
+    .famous-songs-modal-content {
+        max-height: 90vh;
+        border-radius: 16px 16px 0 0;
+        margin-top: auto;
+    }
+
+    .famous-songs-modal-title {
+        font-size: 1.3rem;
+    }
+
+    .famous-songs-filters {
+        padding: 0.75rem 1rem 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .famous-songs-decade-nav {
+        padding: 0.5rem 1rem 0.75rem;
+    }
+
+    .famous-songs-list {
+        padding: 0.75rem 1rem 1rem;
+    }
+
+    .famous-song-item {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .famous-song-item .song-title {
+        font-size: 0.9rem;
+    }
+}
