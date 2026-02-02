@@ -989,7 +989,7 @@ function renderWeekContent(player) {
     const songs = week.songs?.[player] || [];
     const songsSection = songs.length > 0 ? `
         <div class="week-section songs-section">
-            <h4>Songs You Can Play Now!</h4>
+            <h4>Classic Songs for This Week's Key</h4>
             <div class="songs-list">
                 ${songs.map(song => {
                     const links = song.links || {};
@@ -1044,7 +1044,6 @@ function renderWeekContent(player) {
 
     // Get player-specific week notes
     const weekNotes = week.weekNotes?.[player] || '';
-    const hasFamousSongs = FAMOUS_SONGS && FAMOUS_SONGS[weekNum];
     const weekNotesSection = weekNotes ? `
         <details class="week-notes-section">
             <summary class="week-notes-toggle">
@@ -1053,17 +1052,20 @@ function renderWeekContent(player) {
             </summary>
             <div class="week-notes-content">
                 ${weekNotes.split('\n').map(line => line.trim() ? `<p>${line}</p>` : '').join('')}
-                ${hasFamousSongs ? `
-                <div class="famous-songs-cta">
-                    <button class="famous-songs-btn" data-week="${weekNum}">
-                        <span class="btn-icon">🎵</span>
-                        <span class="btn-text">See 20+ Famous Songs You Can Play!</span>
-                        <span class="btn-arrow">→</span>
-                    </button>
-                </div>
-                ` : ''}
             </div>
         </details>
+    ` : '';
+
+    // Famous songs button (appears below the classic songs section)
+    const hasFamousSongs = FAMOUS_SONGS && FAMOUS_SONGS[weekNum];
+    const famousSongsSection = hasFamousSongs ? `
+        <div class="famous-songs-cta standalone">
+            <button class="famous-songs-btn" data-week="${weekNum}">
+                <span class="btn-icon">🎵</span>
+                <span class="btn-text">See 20+ More Famous Songs in This Key!</span>
+                <span class="btn-arrow">→</span>
+            </button>
+        </div>
     ` : '';
 
     const container = document.getElementById(`${player}-week-content`);
@@ -1097,6 +1099,7 @@ function renderWeekContent(player) {
             </div>
         </div>
         ${songsSection}
+        ${famousSongsSection}
         ${challengeSection}
     `;
 
