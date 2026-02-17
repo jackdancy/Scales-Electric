@@ -198,7 +198,40 @@ header h1 {
     color: var(--token-color);
 }
 
-/* 12-Week Journey Progress Bar */
+/* Trophy Progress Graphic */
+.trophy-progress {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto 0;
+}
+
+.trophy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.trophy-svg {
+    width: 64px;
+    height: 76px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    transition: filter 0.5s ease;
+}
+
+.trophy-svg:hover {
+    filter: drop-shadow(0 2px 12px rgba(255, 215, 0, 0.5));
+}
+
+.trophy-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* 12-Chapter Journey Progress Bar */
 .journey-progress {
     max-width: 600px;
     margin: 1.5rem auto 0;
@@ -282,7 +315,7 @@ header h1 {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Week number tooltip */
+/* Chapter number tooltip */
 .week-segment::after {
     content: attr(data-week);
     position: absolute;

@@ -1,5 +1,5 @@
 // Scales Electric - Music Challenge Tracker
-// 12-Week Curriculum Version - Enhanced for Emile & Nestor
+// 12-Chapter Curriculum Version - Enhanced for Emile & Nestor
 
 // Prize configuration
 const PERSONAL_MILESTONES = [
@@ -11,32 +11,32 @@ const PERSONAL_MILESTONES = [
 const JOINT_PRIZE = {
     name: 'PS5 Steering Wheel & Pedals',
     icon: '🏎️',
-    requirement: 'Both complete all 12 weeks'
+    requirement: 'Both complete all 12 chapters'
 };
 
 // Achievement definitions
 const ACHIEVEMENTS = {
     guitar: [
         { id: 'first-strum', name: 'First Strum', icon: '🎸', description: 'Complete your first item', condition: (state) => Object.keys(state.guitar.completed).length > 0 },
-        { id: 'week-complete', name: 'Week Master', icon: '📅', description: 'Complete all items in a week', condition: (state) => state.guitar.weeksCompleted >= 1 },
+        { id: 'week-complete', name: 'Chapter Master', icon: '📅', description: 'Complete all items in a chapter', condition: (state) => state.guitar.weeksCompleted >= 1 },
         { id: 'barre-beginner', name: 'Barre Beginner', icon: '💪', description: 'Complete your first barre chord', condition: (state) => state.guitar.barreCount >= 1 },
         { id: 'barre-master', name: 'Barre Master', icon: '🏆', description: 'Complete 5 barre chords', condition: (state) => state.guitar.barreCount >= 5 },
         { id: 'scale-explorer', name: 'Scale Explorer', icon: '🎵', description: 'Complete 3 scales', condition: (state) => state.guitar.scaleCount >= 3 },
         { id: 'pattern-pro', name: 'Pattern Pro', icon: '🧠', description: 'Complete 6 scales', condition: (state) => state.guitar.scaleCount >= 6 },
         { id: 'caged-explorer', name: 'CAGED Explorer', icon: '🔓', description: 'Learn 3 different CAGED shapes', condition: (state) => state.guitar.cagedShapes.size >= 3 },
-        { id: 'halfway', name: 'Halfway Hero', icon: '⭐', description: 'Complete 6 weeks', condition: (state) => state.guitar.weeksCompleted >= 6 },
-        { id: 'guitar-graduate', name: 'Guitar Graduate', icon: '🎓', description: 'Complete all 12 weeks', condition: (state) => state.guitar.weeksCompleted >= 12 }
+        { id: 'halfway', name: 'Halfway Hero', icon: '⭐', description: 'Complete 6 chapters', condition: (state) => state.guitar.weeksCompleted >= 6 },
+        { id: 'guitar-graduate', name: 'Guitar Graduate', icon: '🎓', description: 'Complete all 12 chapters', condition: (state) => state.guitar.weeksCompleted >= 12 }
     ],
     piano: [
         { id: 'first-keys', name: 'First Keys', icon: '🎹', description: 'Complete your first item', condition: (state) => Object.keys(state.piano.completed).length > 0 },
-        { id: 'week-complete', name: 'Week Master', icon: '📅', description: 'Complete all items in a week', condition: (state) => state.piano.weeksCompleted >= 1 },
+        { id: 'week-complete', name: 'Chapter Master', icon: '📅', description: 'Complete all items in a chapter', condition: (state) => state.piano.weeksCompleted >= 1 },
         { id: 'inversion-explorer', name: 'Inversion Explorer', icon: '🔄', description: 'Master all inversions of a chord', condition: (state) => state.piano.inversionSets >= 1 },
         { id: 'inversion-master', name: 'Inversion Master', icon: '🏅', description: 'Master inversions of 5 chords', condition: (state) => state.piano.inversionSets >= 5 },
         { id: 'speed-demon', name: 'Speed Demon', icon: '⚡', description: 'Record a fast tempo', condition: (state) => state.piano.speedRecords && state.piano.speedRecords.length >= 1 },
         { id: 'black-keys', name: 'Black Key Explorer', icon: '⬛', description: 'Complete 3 scales with black keys', condition: (state) => state.piano.blackKeyScales >= 3 },
         { id: 'two-hands', name: 'Two Hands', icon: '🙌', description: 'Complete scales with both hands', condition: (state) => state.piano.handsTogetherCount >= 3 },
-        { id: 'halfway', name: 'Halfway Hero', icon: '⭐', description: 'Complete 6 weeks', condition: (state) => state.piano.weeksCompleted >= 6 },
-        { id: 'piano-graduate', name: 'Piano Graduate', icon: '🎓', description: 'Complete all 12 weeks', condition: (state) => state.piano.weeksCompleted >= 12 }
+        { id: 'halfway', name: 'Halfway Hero', icon: '⭐', description: 'Complete 6 chapters', condition: (state) => state.piano.weeksCompleted >= 6 },
+        { id: 'piano-graduate', name: 'Piano Graduate', icon: '🎓', description: 'Complete all 12 chapters', condition: (state) => state.piano.weeksCompleted >= 12 }
     ]
 };
 
@@ -947,7 +947,7 @@ function renderWeekContent(player) {
                 <button class="timer-btn ${isTimerActive ? 'active' : ''}" data-action="${isTimerActive ? 'stop' : 'start'}">
                     ${isTimerActive ? '⏹ Stop' : '▶ Start'}
                 </button>
-                <button class="timer-reset-btn" title="Reset this week's time">↺</button>
+                <button class="timer-reset-btn" title="Reset this chapter's time">↺</button>
             </div>
         </div>
     `;
@@ -1023,12 +1023,12 @@ function renderWeekContent(player) {
     const challengeSection = weeklyChallenge ? `
         <div class="weekly-challenge ${isApproved ? 'approved' : ''}">
             <div class="challenge-header">
-                <h4>Weekly Challenge</h4>
+                <h4>Chapter Challenge</h4>
                 ${isApproved ? '<span class="approved-badge">✓ PASSED</span>' : ''}
             </div>
             <p class="challenge-description">${weeklyChallenge}</p>
             <button class="approve-btn ${isApproved ? 'approved' : ''}" data-player="${player}" data-week="${weekNum}">
-                ${isApproved ? '✓ Week Approved' : 'Dad: Mark as Complete'}
+                ${isApproved ? '✓ Chapter Approved' : 'Dad: Mark as Complete'}
             </button>
         </div>
     ` : '';
@@ -1047,7 +1047,7 @@ function renderWeekContent(player) {
     const weekNotesSection = weekNotes ? `
         <details class="week-notes-section">
             <summary class="week-notes-toggle">
-                <span class="toggle-icon">📖</span> What You're Learning This Week
+                <span class="toggle-icon">📖</span> What You're Learning This Chapter
                 <span class="toggle-arrow">▼</span>
             </summary>
             <div class="week-notes-content">
@@ -1072,7 +1072,7 @@ function renderWeekContent(player) {
     container.innerHTML = `
         <div class="week-header-info">
             <div class="week-title-group">
-                <span class="week-number">Week ${weekNum} of 12</span>
+                <span class="week-number">Chapter ${weekNum} of 12</span>
                 <h3 class="week-title">${playerTitle}</h3>
             </div>
             <div class="progress-ring">
@@ -1163,7 +1163,7 @@ function renderWeekContent(player) {
     const resetBtn = container.querySelector('.timer-reset-btn');
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            if (confirm('Reset practice time for this week?')) {
+            if (confirm('Reset practice time for this chapter?')) {
                 resetWeekPracticeTime(player, weekNum);
             }
         });
@@ -1828,7 +1828,7 @@ function createPersonalMilestoneCard(milestone, player) {
             <div class="prize-name">${milestone.name}</div>
             <div class="prize-player">${playerName}</div>
             <div class="prize-status ${earned > 0 ? 'available' : 'locked'}">
-                ${earned > 0 ? `${earned}x earned` : 'Complete 1 week'}
+                ${earned > 0 ? `${earned}x earned` : 'Complete 1 chapter'}
             </div>
         `;
         return div;
@@ -1841,7 +1841,7 @@ function createPersonalMilestoneCard(milestone, player) {
             <div class="prize-name">${milestone.name}</div>
             <div class="prize-player">${playerName}</div>
             <div class="prize-status ${isUnlocked ? 'available' : 'locked'}">
-                ${isUnlocked ? 'Unlocked!' : `${milestone.weeksRequired - weeksComplete} week${milestone.weeksRequired - weeksComplete !== 1 ? 's' : ''} to go`}
+                ${isUnlocked ? 'Unlocked!' : `${milestone.weeksRequired - weeksComplete} chapter${milestone.weeksRequired - weeksComplete !== 1 ? 's' : ''} to go`}
             </div>
         `;
         return div;
@@ -1860,13 +1860,13 @@ function createJointPrizeCard() {
     div.innerHTML = `
         <div class="prize-icon">${JOINT_PRIZE.icon}</div>
         <div class="prize-name">${JOINT_PRIZE.name}</div>
-        <div class="prize-requirement">Both complete all 12 weeks</div>
+        <div class="prize-requirement">Both complete all 12 chapters</div>
         <div class="prize-progress">
             <span class="guitar-progress">${state.guitar.name}: ${guitarComplete}/12</span>
             <span class="piano-progress">${state.piano.name}: ${pianoComplete}/12</span>
         </div>
         <div class="prize-status ${bothComplete ? 'available' : 'locked'}">
-            ${bothComplete ? 'UNLOCKED!' : `${24 - totalWeeks} weeks to go`}
+            ${bothComplete ? 'UNLOCKED!' : `${24 - totalWeeks} chapters to go`}
         </div>
     `;
     return div;
@@ -1893,7 +1893,61 @@ function renderAchievements(player) {
     container.innerHTML = html;
 }
 
-// Render the 12-week journey progress bar
+// Render trophy progress graphic
+function renderTrophy() {
+    const container = document.getElementById('trophy-progress');
+
+    // Calculate overall completion: average of all chapters for both players
+    let totalCompleted = 0;
+    let totalItems = 0;
+
+    for (let w = 1; w <= 12; w++) {
+        const gp = getWeekProgress('guitar', w);
+        const pp = getWeekProgress('piano', w);
+        totalCompleted += gp.completed + pp.completed;
+        totalItems += gp.total + pp.total;
+    }
+
+    const overallPercent = totalItems > 0 ? Math.round((totalCompleted / totalItems) * 100) : 0;
+    // Gold fills from bottom up, so gradient stop is at (100 - percent) from top
+    const greyStop = 100 - overallPercent;
+
+    container.innerHTML = `
+        <div class="trophy-container">
+            <svg class="trophy-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="trophyFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="${greyStop}%" stop-color="#555" />
+                        <stop offset="${greyStop}%" stop-color="#FFD700" />
+                    </linearGradient>
+                    <linearGradient id="trophyShine" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.3)" />
+                        <stop offset="50%" stop-color="rgba(255,255,255,0)" />
+                        <stop offset="100%" stop-color="rgba(255,255,255,0.1)" />
+                    </linearGradient>
+                </defs>
+                <!-- Cup body -->
+                <path d="M25,10 L75,10 L70,55 Q50,75 30,55 Z" fill="url(#trophyFill)" stroke="#888" stroke-width="1.5"/>
+                <!-- Shine overlay -->
+                <path d="M25,10 L75,10 L70,55 Q50,75 30,55 Z" fill="url(#trophyShine)"/>
+                <!-- Left handle -->
+                <path d="M25,18 Q5,18 8,38 Q10,50 25,48" fill="none" stroke="url(#trophyFill)" stroke-width="5" stroke-linecap="round"/>
+                <!-- Right handle -->
+                <path d="M75,18 Q95,18 92,38 Q90,50 75,48" fill="none" stroke="url(#trophyFill)" stroke-width="5" stroke-linecap="round"/>
+                <!-- Stem -->
+                <rect x="44" y="68" width="12" height="20" rx="2" fill="url(#trophyFill)" stroke="#888" stroke-width="1"/>
+                <!-- Base -->
+                <rect x="30" y="88" width="40" height="8" rx="3" fill="url(#trophyFill)" stroke="#888" stroke-width="1"/>
+                <rect x="25" y="96" width="50" height="6" rx="2" fill="url(#trophyFill)" stroke="#888" stroke-width="1"/>
+                <!-- Star on cup -->
+                ${overallPercent > 0 ? `<text x="50" y="45" text-anchor="middle" font-size="18" fill="${overallPercent >= 50 ? '#B8860B' : '#777'}" font-family="serif">★</text>` : ''}
+            </svg>
+            <div class="trophy-label">${overallPercent}% Complete</div>
+        </div>
+    `;
+}
+
+// Render the 12-chapter journey progress bar
 function renderJourneyProgress() {
     const journeyBar = document.getElementById('journey-bar');
     journeyBar.innerHTML = '';
@@ -1964,6 +2018,9 @@ function render() {
 
     // Update current week display
     document.getElementById('current-week-num').textContent = state.currentWeek;
+
+    // Render trophy progress
+    renderTrophy();
 
     // Render journey progress bar
     renderJourneyProgress();

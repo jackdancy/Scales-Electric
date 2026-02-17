@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scales Electric - 12 Week Music Challenge</title>
+    <title>Scales Electric - 12 Chapter Music Challenge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
             </div>
             <div class="header-center">
                 <h1>Scales Electric</h1>
-                <p class="tagline">12-Week Challenge: Learn Scales. Earn Tokens. Win Prizes!</p>
+                <p class="tagline">12-Chapter Challenge: Learn Scales. Earn Tokens. Win Prizes!</p>
             </div>
             <div class="player-score piano-score">
                 <span class="score-tokens"><span id="piano-tokens-header">0</span>⚡</span>
@@ -30,18 +30,23 @@
 
         <div class="week-navigator">
             <button id="prev-week" class="nav-btn">&larr;</button>
-            <span class="current-week">Week <span id="current-week-num">1</span> of 12</span>
+            <span class="current-week">Chapter <span id="current-week-num">1</span> of 12</span>
             <button id="next-week" class="nav-btn">&rarr;</button>
         </div>
 
-        <!-- 12-Week Progress Bar -->
+        <!-- Trophy Progress -->
+        <div class="trophy-progress" id="trophy-progress">
+            <!-- Trophy SVG rendered by JS -->
+        </div>
+
+        <!-- 12-Chapter Progress Bar -->
         <div class="journey-progress">
             <div class="journey-bar" id="journey-bar">
-                <!-- 12 week segments rendered by JS -->
+                <!-- 12 chapter segments rendered by JS -->
             </div>
             <div class="journey-labels">
-                <span>Week 1</span>
-                <span>Week 12</span>
+                <span>Ch. 1</span>
+                <span>Ch. 12</span>
             </div>
         </div>
 

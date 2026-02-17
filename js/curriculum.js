@@ -1,4 +1,4 @@
-// 12-Week Music Learning Curriculum
+// 12-Chapter Music Learning Curriculum
 // Guitar: Position-based approach - learn moveable patterns
 // Piano: Key-based approach - starting with C Major
 
@@ -12,17 +12,17 @@ const CURRICULUM = [
         weekNotes: {
             guitar: `Welcome to your guitar journey! 🎸
 
-This week you're learning something that will change everything: the G Major position. Why G and not C like piano players start with? Because guitar is different - it's all about SHAPES and POSITIONS that you can move around the neck.
+This chapter you're learning something that will change everything: the G Major position. Why G and not C like piano players start with? Because guitar is different - it's all about SHAPES and POSITIONS that you can move around the neck.
 
-The G-C-D chords you're learning this week are incredibly powerful. With just these three chords, you can play THOUSANDS of songs - seriously! From classic rock to pop to country, this progression is everywhere. When you hear music on the radio, start listening for it - you'll be amazed how often you recognize "hey, that's G-C-D!"
+The G-C-D chords you're learning this chapter are incredibly powerful. With just these three chords, you can play THOUSANDS of songs - seriously! From classic rock to pop to country, this progression is everywhere. When you hear music on the radio, start listening for it - you'll be amazed how often you recognize "hey, that's G-C-D!"
 
 We're starting here because these open chords sound full and rich, and they'll let you play real songs RIGHT AWAY. That's the goal - get you making music fast so you stay excited and motivated.
 
-The scale pattern you're learning isn't just about G Major - it's a SHAPE that works everywhere on the neck. Learn it well, because in a few weeks you'll discover you can slide this same shape up and down to play in ANY key. That's the superpower of guitar!`,
+The scale pattern you're learning isn't just about G Major - it's a SHAPE that works everywhere on the neck. Learn it well, because in a few chapters you'll discover you can slide this same shape up and down to play in ANY key. That's the superpower of guitar!`,
 
             piano: `Welcome to your piano adventure! 🎹
 
-This week you're starting with C Major - and there's a really cool reason why. Look at the piano keys: C Major uses ALL white keys! This makes it the perfect scale to learn proper finger technique without worrying about black keys yet.
+This chapter you're starting with C Major - and there's a really cool reason why. Look at the piano keys: C Major uses ALL white keys! This makes it the perfect scale to learn proper finger technique without worrying about black keys yet.
 
 But here's what's really exciting: the fingering pattern you're learning (1-2-3, thumb under, 1-2-3-4-5) is the SAME pattern you'll use for almost every major scale. So while it feels like you're just learning C Major, you're actually learning a technique that will work for everything!
 
@@ -115,17 +115,17 @@ You're building the foundation for everything that comes next. Take your time, k
         title: "E Minor Pentatonic - The Improv Foundation",
         description: "Guitar: The most important scale for soloing. Piano: G Major",
         weekNotes: {
-            guitar: `This week is HUGE. You're learning the E Minor Pentatonic scale - and this is honestly the most important scale in rock and blues guitar. 🔥
+            guitar: `This chapter is HUGE. You're learning the E Minor Pentatonic scale - and this is honestly the most important scale in rock and blues guitar. 🔥
 
 Why is it so special? The pentatonic scale has only 5 notes (that's what "penta" means), and those 5 notes are carefully chosen to sound good over almost anything. You literally CANNOT play a wrong note when improvising with this scale over the right chords!
 
-Here's something amazing: the E Minor Pentatonic shape you're learning sits right in the open position, and it overlaps with the G Major scale you learned last week. That's not a coincidence - they're related (we'll explore this more next week). This means you already know some of these notes!
+Here's something amazing: the E Minor Pentatonic shape you're learning sits right in the open position, and it overlaps with the G Major scale you learned last chapter. That's not a coincidence - they're related (we'll explore this more next chapter). This means you already know some of these notes!
 
-Why are we learning this in week 2? Because I want you to start IMPROVISING as soon as possible. Playing scales up and down is important, but the real magic happens when you use those notes to create your own music. Put on a backing track in Em and just... play. Try different rhythms. Bend some notes. Make it YOUR sound.
+Why are we learning this in chapter 2? Because I want you to start IMPROVISING as soon as possible. Playing scales up and down is important, but the real magic happens when you use those notes to create your own music. Put on a backing track in Em and just... play. Try different rhythms. Bend some notes. Make it YOUR sound.
 
 Every legendary guitarist - from Hendrix to Slash to your favorite players - uses this exact scale shape. You're learning the same tools the pros use!`,
 
-            piano: `This week you're adding G Major to your collection! 🎵
+            piano: `This chapter you're adding G Major to your collection! 🎵
 
 G Major has just one black key (F#), which makes it the perfect next step after C Major. Your fingers already know the basic pattern - now they just need to find that F# and you're set!
 
@@ -234,7 +234,7 @@ Why does this matter? Because now you have OPTIONS when you improvise. Over a G 
 
 This is exactly what professional guitarists do - they switch between major and minor feels depending on the emotion they want. You're starting to think like a pro!
 
-The Am chord you're adding this week is also related to C Major the same way. Music is full of these beautiful connections once you know where to look.`,
+The Am chord you're adding this chapter is also related to C Major the same way. Music is full of these beautiful connections once you know where to look.`,
 
             piano: `Welcome to D Major - you're really building your key collection now! 🎹
 
@@ -350,13 +350,13 @@ Here's why both matter: A Minor is one of the most common keys in rock and pop. 
 
 The A and E Major chords you're learning are a powerful pair. A-E is another super common progression (like G-D was). Notice how the E Major shape is similar to Am but with one different finger? These relationships help you learn faster.
 
-By the end of this week, you'll have TWO pentatonic positions and a solid collection of open chords. That's a serious toolkit! Most guitarists take months to get this far. You're building real skills that will stay with you forever.
+By the end of this chapter, you'll have TWO pentatonic positions and a solid collection of open chords. That's a serious toolkit! Most guitarists take months to get this far. You're building real skills that will stay with you forever.
 
 Next month, we'll start moving these shapes UP the neck. The open position is your foundation - now you're ready to explore the whole fretboard!`,
 
             piano: `Month one complete! You've learned three major scales and their inversions. That's a huge accomplishment! 🌟
 
-This week we're focusing on how those scales and chords CONNECT. The C-G-D progression (called I-IV-V in music theory) is everywhere in music. Once you can play it smoothly, you'll recognize it in songs all the time.
+This chapter we're focusing on how those scales and chords CONNECT. The C-G-D progression (called I-IV-V in music theory) is everywhere in music. Once you can play it smoothly, you'll recognize it in songs all the time.
 
 Here's the exciting part: this PATTERN works in every key! In C Major, I-IV-V is C-G-D. In G Major, it's G-D-A. The relationship between the chords is always the same - only the starting note changes. This is a fundamental concept that will make learning new keys much faster.
 
@@ -470,7 +470,7 @@ You're starting to think like a real musician - not just playing notes, but unde
         weekNotes: {
             guitar: `Welcome to Month 2! This is where guitar gets REALLY exciting. 🚀
 
-Remember how I said the shapes you learn can move around the neck? This week, you're going to experience that firsthand. The "E-Shape" major scale pattern you're learning is MOVEABLE - slide it to any fret and you're playing a different key!
+Remember how I said the shapes you learn can move around the neck? This chapter, you're going to experience that firsthand. The "E-Shape" major scale pattern you're learning is MOVEABLE - slide it to any fret and you're playing a different key!
 
 Here's the magic:
 - Pattern at fret 3 = G Major
@@ -480,9 +480,9 @@ Here's the magic:
 
 ONE shape, EVERY key! This is the guitar's secret weapon. Piano players need to learn different fingerings for each key. You just... slide.
 
-You're also learning your first BARRE CHORD this week. The E-shape barre chord uses the same principle - it's the E Major shape you already know, but with your index finger barring across all strings. Yes, it's hard at first. Yes, your hand will get tired. But stick with it - barre chords are the gateway to playing ANY chord ANYWHERE on the neck.
+You're also learning your first BARRE CHORD this chapter. The E-shape barre chord uses the same principle - it's the E Major shape you already know, but with your index finger barring across all strings. Yes, it's hard at first. Yes, your hand will get tired. But stick with it - barre chords are the gateway to playing ANY chord ANYWHERE on the neck.
 
-This week might feel challenging, but you're leveling up big time. Every guitarist remembers when barre chords "clicked" for them. Your moment is coming!`,
+This chapter might feel challenging, but you're leveling up big time. Every guitarist remembers when barre chords "clicked" for them. Your moment is coming!`,
 
             piano: `Month 2 begins with something beautiful: minor scales! 🎭
 
@@ -603,9 +603,9 @@ Your ear is getting more sophisticated. You're not just playing notes anymore - 
         title: "Moveable Pentatonic - Box 1 Anywhere",
         description: "Guitar: Take your pentatonic anywhere on the neck. Piano: E Minor",
         weekNotes: {
-            guitar: `Remember the E Minor Pentatonic from week 2? Time to set it FREE! 🔓
+            guitar: `Remember the E Minor Pentatonic from chapter 2? Time to set it FREE! 🔓
 
-The open position Em Pentatonic was great for learning, but here's the thing - it was just Box 1 played at the nut. This week, you're learning to play that SAME box shape anywhere on the neck!
+The open position Em Pentatonic was great for learning, but here's the thing - it was just Box 1 played at the nut. This chapter, you're learning to play that SAME box shape anywhere on the neck!
 
 Here's how it works:
 - Box 1 at fret 5 = A Minor Pentatonic
@@ -616,7 +616,7 @@ You already KNOW this shape from open position. Now you're just moving it up the
 
 This is huge for your soloing. Someone says "jam in A minor"? You know exactly where to go - 5th fret, Box 1. "Play something in C minor"? 8th fret, same shape!
 
-Combined with last week's moveable major scale, you now have two powerful patterns that work in ANY key. You're not limited to open position anymore - the ENTIRE fretboard is opening up to you!
+Combined with last chapter's moveable major scale, you now have two powerful patterns that work in ANY key. You're not limited to open position anymore - the ENTIRE fretboard is opening up to you!
 
 The Em barre chord uses a similar idea. It's based on the Em open chord shape, moved up the neck. More moveable power!`,
 
@@ -634,7 +634,7 @@ Keep working those inversions. The smoother your chord transitions become, the m
         },
         weeklyChallenge: {
             guitar: "Play Minor Pentatonic Box 1 at fret 5 (Am), fret 7 (Bm), fret 10 (Dm). Improvise over backing tracks in each key.",
-            piano: "Play E Minor scale at 70 BPM, then G Major. Play Em-Am-D-G progression with smooth inversions. Recap: Play any 2 scales from weeks 1-5."
+            piano: "Play E Minor scale at 70 BPM, then G Major. Play Em-Am-D-G progression with smooth inversions. Recap: Play any 2 scales from chapters 1-5."
         },
         songs: {
             guitar: [
@@ -740,7 +740,7 @@ Think of it like this: the fretboard is a map, and you're learning different nei
 
 The A-shape barre chord is also crucial. Some guitarists actually find it easier than E-shape because you don't have to bar all 6 strings - just 5. It gives you a different voicing of the same chord, which means more tonal options.
 
-This week is challenging but SO rewarding. You're halfway through the program, and your understanding of the guitar is transforming from "player" to "musician." Keep pushing!`,
+This chapter is challenging but SO rewarding. You're halfway through the program, and your understanding of the guitar is transforming from "player" to "musician." Keep pushing!`,
 
             piano: `A Major introduces THREE sharps - F#, C#, and G#. But don't let that intimidate you! 💪
 
@@ -997,7 +997,7 @@ The connection point between Box 1 and Box 2 is your gateway. Practice going bac
 
 The F barre chord you're learning uses the E-shape at fret 1 - it's tricky because you're close to the nut where the strings are harder to press. But it's a SUPER important chord that's used constantly. Master it now and you'll thank yourself later!
 
-You're in the home stretch. These final weeks are about taking everything you've learned and turning it into real musical freedom.`,
+You're in the home stretch. These final chapters are about taking everything you've learned and turning it into real musical freedom.`,
 
             piano: `F Major is special - it's the first scale with a FLAT (Bb) instead of sharps! 🎹
 
@@ -1009,7 +1009,7 @@ The I-IV-V in F Major is F-Bb-C. That Bb chord might be new - it's B-flat, D, F.
 
 You're building toward something amazing: understanding music theory in a practical way. When you see a new piece of music, you'll understand WHY certain chords and scales are used. That's the difference between someone who just plays notes and a real musician.
 
-Three weeks to go. Keep up the fantastic work!`
+Three chapters to go. Keep up the fantastic work!`
         },
         weeklyChallenge: {
             guitar: "Play A Minor Pentatonic using Boxes 1 and 2 connected. Improvise a solo that moves between both boxes smoothly.",
@@ -1119,7 +1119,7 @@ But there's a difference in FEELING. Start on A and emphasize A as your home not
 
 The minor barre chords follow the same logic as major barres - they're just moveable versions of the open minor shapes you already know. Am barre is the E-minor shape moved up the neck.
 
-This week, really FEEL the difference between major and minor. Play C Major, then A Minor. Same notes, different worlds! Understanding this emotionally (not just technically) is what separates good players from great ones.`,
+This chapter, really FEEL the difference between major and minor. Play C Major, then A Minor. Same notes, different worlds! Understanding this emotionally (not just technically) is what separates good players from great ones.`,
 
             piano: `D Minor is the relative minor of F Major - same notes (including Bb), different starting point! 🎹
 
@@ -1129,7 +1129,7 @@ D Minor has a particularly beautiful, melancholy quality. Some of the most emoti
 
 The Dm-Gm-C-F progression is very common in pop and R&B music. It creates a sophisticated, emotional sound that's different from the brighter major-key progressions you've been playing.
 
-By the end of this week, you'll know:
+By the end of this chapter, you'll know:
 - Six major scales (C, G, D, A, E, F)
 - Three minor scales (Am, Em, Dm)
 - Inversions for all of them
@@ -1253,7 +1253,7 @@ The 7th chords (A7, E7) are the sound of blues. Instead of a happy major or sad 
 
 Try this: play a 12-bar blues progression with A7, D7, E7. Then solo over it using the blues scale. Bend some notes. Add vibrato. FEEL it. This is where technique meets emotion, and music becomes magic!
 
-One more week after this. You've come so far!`,
+One more chapter after this. You've come so far!`,
 
             piano: `Pentatonic scales are like a cheat code for making beautiful music! ⭐
 
@@ -1267,7 +1267,7 @@ Try improvising! Put on a backing track in C Major (or A Minor) and just play wi
 
 You're also learning the blues scale, which adds one "spicy" note to the pentatonic. That note creates tension and a bluesy feel. It's a small addition with a huge impact on the sound!
 
-Almost there - one week to go! You've learned an incredible amount about music.`
+Almost there - one chapter to go! You've learned an incredible amount about music.`
         },
         weeklyChallenge: {
             guitar: "Play A Blues Scale. Improvise a 12-bar blues solo using the blues scale. Add bends and vibrato for expression!",
@@ -1368,9 +1368,9 @@ Almost there - one week to go! You've learned an incredible amount about music.`
         title: "Putting It All Together",
         description: "Guitar: Full neck freedom - know where you are in any key! Piano: 7th Chords & Jazz",
         weekNotes: {
-            guitar: `THE FINAL WEEK! You've made it! 🏆🎸🎉
+            guitar: `THE FINAL CHAPTER! You've made it! 🏆🎸🎉
 
-Take a moment to appreciate how far you've come. Twelve weeks ago, you were just starting out. Now look at you:
+Take a moment to appreciate how far you've come. Twelve chapters ago, you were just starting out. Now look at you:
 
 ✅ You know TWO major scale positions and can connect them
 ✅ You know moveable pentatonic boxes and how to flow between them
@@ -1379,7 +1379,7 @@ Take a moment to appreciate how far you've come. Twelve weeks ago, you were just
 ✅ You understand how major and minor keys relate
 ✅ You know enough to play THOUSANDS of songs!
 
-This week is about putting it ALL together. The 12-bar blues is the ultimate test - it uses everything you've learned. Chords, scales, improvisation, moving around the neck.
+This chapter is about putting it ALL together. The 12-bar blues is the ultimate test - it uses everything you've learned. Chords, scales, improvisation, moving around the neck.
 
 But here's the real secret: this isn't the end. It's the BEGINNING. You now have the foundation to learn anything you want on guitar. Want to play metal? Jazz? Funk? Country? The skills you've built will take you there.
 
@@ -1387,7 +1387,7 @@ You've proven you can do hard things. You stuck with it when barre chords were t
 
 I'm so proud of you. Now go play some music! 🎸🔥`,
 
-            piano: `CONGRATULATIONS - YOU MADE IT TO WEEK 12! 🎹🌟🎉
+            piano: `CONGRATULATIONS - YOU MADE IT TO CHAPTER 12! 🎹🌟🎉
 
 What an incredible journey this has been! Let's celebrate everything you've accomplished:
 
@@ -1398,9 +1398,9 @@ What an incredible journey this has been! Let's celebrate everything you've acco
 ✅ You've explored pentatonics and the blues scale
 ✅ You've built real independence between your hands
 
-This week introduces 7th chords - the sound of jazz! The Cmaj7-Am7-Dm7-G7 progression is called a "jazz turnaround" and it's one of the most beautiful sounds in music. It's a taste of where your piano journey can go next!
+This chapter introduces 7th chords - the sound of jazz! The Cmaj7-Am7-Dm7-G7 progression is called a "jazz turnaround" and it's one of the most beautiful sounds in music. It's a taste of where your piano journey can go next!
 
-But more importantly, you've proven something to yourself: you can set a big goal and achieve it. You can learn something challenging through consistent practice. You can grow and improve week after week.
+But more importantly, you've proven something to yourself: you can set a big goal and achieve it. You can learn something challenging through consistent practice. You can grow and improve chapter after chapter.
 
 These skills - discipline, patience, perseverance - are gifts that will help you in everything you do. And music will be with you forever. Whenever you sit down at a piano, you carry all of this knowledge with you.
 
