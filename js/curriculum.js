@@ -93,7 +93,13 @@ You're building the foundation for everything that comes next. Take your time, k
                     cagedShape: "D Shape",
                     tip: "Compact shape - great for quick changes to G and C."
                 }
-            ]
+            ],
+            riff: {
+                name: "Smoke on the Water",
+                artist: "Deep Purple",
+                description: "The most iconic guitar riff ever! Uses simple power chord shapes in the G position you're learning.",
+                tip: "Play the main riff on the D and G strings using just two fingers. It's all 4th intervals — 0-3-5, 0-3-6-5, 0-3-5, 3-0."
+            }
         },
         piano: {
             scale: {
@@ -199,7 +205,13 @@ Keep building that speed with your scales. The metronome is your friend - it mig
                     cagedShape: "E Shape",
                     tip: "One of the easiest chords - just two fingers! Great full sound."
                 }
-            ]
+            ],
+            riff: {
+                name: "Seven Nation Army",
+                artist: "The White Stripes",
+                description: "That bass-line riff everyone knows! It's actually played on guitar with an octave pedal. Pure E minor pentatonic.",
+                tip: "All on the A string: 7-7-10-7-5-3-2. Use your index finger to slide between positions. Keep it tight and punchy!"
+            }
         },
         piano: {
             scale: {
@@ -320,7 +332,13 @@ You're now comfortable with three major scales. That might not sound like much, 
                     cagedShape: "A Shape",
                     tip: "Very similar to E chord shape - same fingers, different strings!"
                 }
-            ]
+            ],
+            riff: {
+                name: "Day Tripper",
+                artist: "The Beatles",
+                description: "A legendary riff that connects E minor and G positions. Great for building single-note picking confidence.",
+                tip: "Starts on the open low E string, then walks up using notes from the Em pentatonic. Focus on even picking — all downstrokes to start!"
+            }
         },
         piano: {
             scale: {
@@ -447,7 +465,13 @@ You're starting to think like a real musician - not just playing notes, but unde
                     cagedShape: "E Shape",
                     tip: "The foundation chord shape. This shape becomes a barre chord next month!"
                 }
-            ]
+            ],
+            riff: {
+                name: "Back in Black",
+                artist: "AC/DC",
+                description: "One of the greatest rock riffs of all time! Built around the A minor pentatonic and A-E chord family you're learning.",
+                tip: "The riff uses E-D-A power chords with pull-offs. Start slow — the rhythm is what makes it iconic. Accent the first note of each phrase!"
+            }
         },
         piano: {
             scale: {
@@ -581,7 +605,13 @@ Your ear is getting more sophisticated. You're not just playing notes anymore - 
                     isBarre: true,
                     barreInfo: "Same technique as G barre, just moved up 2 frets."
                 }
-            ]
+            ],
+            riff: {
+                name: "Sunshine of Your Love",
+                artist: "Cream",
+                description: "Eric Clapton's signature riff! Uses moveable patterns on the low strings — perfect for this chapter's focus.",
+                tip: "The riff moves between D and C positions on the low strings. Use your index and ring fingers. Let the notes ring out and feel the groove!"
+            }
         },
         piano: {
             scale: {
@@ -708,7 +738,13 @@ Keep working those inversions. The smoother your chord transitions become, the m
                     isBarre: true,
                     barreInfo: "Index bars all strings at fret 5, ring and pinky on frets 7."
                 }
-            ]
+            ],
+            riff: {
+                name: "Enter Sandman",
+                artist: "Metallica",
+                description: "A dark, powerful riff that moves the pentatonic box up the neck. One of the most recognizable metal riffs ever!",
+                tip: "Uses open low E string with hammer-ons at frets 5 and 6. The rhythm is key — listen to the original and match the timing exactly."
+            }
         },
         piano: {
             scale: {
@@ -839,7 +875,13 @@ The metronome is still your friend. Speed will come naturally with consistent pr
                     isBarre: true,
                     barreInfo: "Same shape at fret 5. Compare with E-shape D at fret 10."
                 }
-            ]
+            ],
+            riff: {
+                name: "Iron Man",
+                artist: "Black Sabbath",
+                description: "Tony Iommi's legendary riff with the root on the 5th string. Uses the A-shape barre position you're learning!",
+                tip: "Play power chords sliding from B (2nd fret) to D (5th fret) to E (7th fret). The timing has a heavy, plodding feel — don't rush it!"
+            }
         },
         piano: {
             scale: {
@@ -960,7 +1002,13 @@ Month 2 is almost complete. You should feel really proud of how far you've come!
                     tip: "E-shape G at fret 3, A-shape G at fret 10. Same chord, different neck positions!",
                     isBarre: true
                 }
-            ]
+            ],
+            riff: {
+                name: "Sweet Child O' Mine",
+                artist: "Guns N' Roses",
+                description: "Slash's iconic intro riff connects two scale positions — exactly what you're practising this chapter!",
+                tip: "The riff arpeggiates through D-C-G shapes. Start slowly and focus on clean string changes. It uses a repeating picking pattern across strings 1-3."
+            }
         },
         piano: {
             scale: {
@@ -1087,7 +1135,13 @@ Three chapters to go. Keep up the fantastic work!`
                     isBarre: true,
                     barreInfo: "Index bars all strings at fret 1. This is the hardest fret to barre - if you can do F, you can do any barre!"
                 }
-            ]
+            ],
+            riff: {
+                name: "Whole Lotta Love",
+                artist: "Led Zeppelin",
+                description: "Jimmy Page's grinding riff uses pentatonic boxes 1 and 2 — the two positions you've been connecting!",
+                tip: "Based around E blues scale. The main riff is on the low E and A strings with a bend on fret 7. Let it growl!"
+            }
         },
         piano: {
             scale: {
@@ -1219,7 +1273,13 @@ That's a LOT of musical knowledge. You can now play in most common keys, underst
                     tip: "A-minor shape moved up. Root on 5th string.",
                     isBarre: true
                 }
-            ]
+            ],
+            riff: {
+                name: "Another One Bites the Dust",
+                artist: "Queen",
+                description: "John Deacon's legendary bass riff adapted for guitar. A masterclass in minor key groove!",
+                tip: "Play on the low E string: open E, then hammer-on to G (3rd fret), slide to A (5th fret). The rhythm and muting are everything!"
+            }
         },
         piano: {
             scale: {
@@ -1348,7 +1408,13 @@ Almost there - one chapter to go! You've learned an incredible amount about musi
                     difficulty: 1,
                     tip: "E7 to A7 is the heart of the blues! Listen for that dominant 7th sound."
                 }
-            ]
+            ],
+            riff: {
+                name: "Rumble",
+                artist: "Link Wray",
+                description: "The riff that invented the power chord! Raw blues scale energy — banned from radio for sounding too dangerous.",
+                tip: "Power chords on E and A with tremolo picking. Add the blues note (Bb on fret 6 of the E string) for that gritty sound. Keep it raw!"
+            }
         },
         piano: {
             scale: {
@@ -1485,7 +1551,13 @@ I'm incredibly proud of you. You're not just a piano player now - you're a MUSIC
                     difficulty: 2,
                     tip: "4 bars of A7, 2 bars of D7, 2 bars of A7, 1 bar E7, 1 bar D7, 2 bars A7. This is the foundation of rock and roll!"
                 }
-            ]
+            ],
+            riff: {
+                name: "Purple Haze",
+                artist: "Jimi Hendrix",
+                description: "The ultimate finale riff! Combines everything — blues scale, barre chords, pentatonic runs, and pure attitude.",
+                tip: "Starts with the 'Hendrix chord' (E7#9). The main riff uses the E blues scale with aggressive bends. This is your graduation riff — make it scream!"
+            }
         },
         piano: {
             scale: {

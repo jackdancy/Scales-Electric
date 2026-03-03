@@ -2561,3 +2561,213 @@ footer {
         font-size: 0.9rem;
     }
 }
+
+/* ===== Sprint Bonus Section (Piano) ===== */
+.sprint-bonus-section {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0.05) 100%);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sprint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.sprint-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: var(--piano-light);
+}
+
+.sprint-status {
+    font-size: 0.8rem;
+    color: var(--piano-light);
+    font-weight: 600;
+}
+
+.sprint-dots {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.sprint-dot {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(52, 152, 219, 0.4);
+    background: rgba(52, 152, 219, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.sprint-dot.earned {
+    border-color: var(--piano-light);
+    background: linear-gradient(135deg, var(--piano-color), var(--piano-light));
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.5);
+}
+
+.sprint-dot-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.sprint-dot-unit {
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sprint-dot.earned .sprint-dot-value,
+.sprint-dot.earned .sprint-dot-unit {
+    color: white;
+}
+
+.sprint-countdown {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.sprint-countdown strong {
+    color: var(--piano-light);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.sprint-countdown.earned {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.sprint-info {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* Sprint Notification Toast */
+.sprint-notification {
+    position: fixed;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    transition: top 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sprint-notification.show {
+    top: 20px;
+}
+
+.sprint-notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, var(--piano-color), var(--piano-light));
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(52, 152, 219, 0.5);
+    white-space: nowrap;
+}
+
+.sprint-notification-icon {
+    font-size: 1.2rem;
+}
+
+.sprint-notification-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.sprint-notification-sub {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Riff of the Chapter (Guitar) ===== */
+.riff-section {
+    margin: 1rem 0;
+}
+
+.riff-badge {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--guitar-light);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.riff-card {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.riff-header {
+    margin-bottom: 0.5rem;
+}
+
+.riff-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--guitar-light);
+    text-transform: uppercase;
+}
+
+.riff-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+
+.riff-artist {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.riff-description {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.riff-tip {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.4;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--guitar-color);
+}
+
+.riff-tip .tip-icon {
+    margin-right: 0.25rem;
+}

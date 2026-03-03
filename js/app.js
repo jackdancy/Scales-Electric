@@ -67,7 +67,8 @@ let state = {
         handsTogetherCount: 0,
         inversionSets: 0,
         blackKeyScales: 0,
-        weeksCompleted: 0  // Calculated from approvedWeeks
+        weeksCompleted: 0,  // Calculated from approvedWeeks
+        sprintBonus: {} // { "week-1": { date, sessions, pointsEarned }, ... }
     },
     currentWeek: 1,
     startDate: null,
@@ -86,6 +87,10 @@ let audioContext = null;
 let practiceTimerInterval = null;
 let practiceTimerPlayer = null;
 const WEEKLY_PRACTICE_GOAL = 30 * 60; // 30 minutes in seconds
+
+// Sprint bonus (piano only)
+const SPRINT_DURATION = 240; // 4 minutes in seconds
+const SPRINT_REWARDS = [5, 10, 20]; // Screen time minutes per session (max 3/day = 35 min)
 
 // Common emojis for notes
 const EMOJI_PICKER = ['😊', '😅', '🤔', '😤', '🎉', '⭐', '💪', '👍', '👎', '🔥', '❄️', '🐌', '🚀', '✅', '❌', '⚠️', '💡', '🎯', '🎵', '🎸', '🎹', '👆', '👇', '🔄', '⏰'];
@@ -257,6 +262,11 @@ function loadState() {
         // Ensure approvedWeeks arrays exist
         if (!state.guitar.approvedWeeks) state.guitar.approvedWeeks = [];
         if (!state.piano.approvedWeeks) state.piano.approvedWeeks = [];
+        // Ensure sprintBonus exists (migration)
+        if (!state.piano.sprintBonus || state.piano.sprintBonus.date !== undefined) {
+            // Migrate from old single-object format to per-chapter format
+            state.piano.sprintBonus = {};
+        }
         // Update weeksCompleted from approvedWeeks
         state.guitar.weeksCompleted = state.guitar.approvedWeeks.length;
         state.piano.weeksCompleted = state.piano.approvedWeeks.length;
@@ -513,6 +523,11 @@ function stopPracticeTimer() {
         }
         state[player].practiceTime[weekKey] += elapsed;
 
+        // Sprint bonus check for piano
+        if (player === 'piano' && elapsed >= SPRINT_DURATION) {
+            awardSprintBonus(week);
+        }
+
         state.activePracticeTimer = null;
     }
 
@@ -526,12 +541,78 @@ function stopPracticeTimer() {
     render();
 }
 
+function getSprintForWeek(weekNum) {
+    const key = `week-${weekNum}`;
+    if (!state.piano.sprintBonus[key]) {
+        state.piano.sprintBonus[key] = { date: null, sessions: 0, pointsEarned: 0 };
+    }
+    const today = new Date().toISOString().slice(0, 10);
+    if (state.piano.sprintBonus[key].date !== today) {
+        state.piano.sprintBonus[key] = { date: today, sessions: 0, pointsEarned: 0 };
+    }
+    return state.piano.sprintBonus[key];
+}
+
+function awardSprintBonus(weekNum) {
+    const sprint = getSprintForWeek(weekNum);
+    if (sprint.sessions >= SPRINT_REWARDS.length) return; // Already maxed today
+
+    const reward = SPRINT_REWARDS[sprint.sessions];
+    sprint.sessions++;
+    sprint.pointsEarned += reward;
+    saveState();
+    showSprintNotification(reward, sprint.sessions);
+}
+
+function showSprintNotification(points, sessionNum) {
+    // Remove existing notification if any
+    const existing = document.querySelector('.sprint-notification');
+    if (existing) existing.remove();
+
+    const notification = document.createElement('div');
+    notification.className = 'sprint-notification';
+    notification.innerHTML = `
+        <div class="sprint-notification-content">
+            <span class="sprint-notification-icon">⚡</span>
+            <span class="sprint-notification-text">Sprint Bonus! +${points} min screen time</span>
+            <span class="sprint-notification-sub">Session ${sessionNum} of ${SPRINT_REWARDS.length} today</span>
+        </div>
+    `;
+    document.body.appendChild(notification);
+
+    // Trigger animation
+    requestAnimationFrame(() => notification.classList.add('show'));
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 400);
+    }, 3000);
+}
+
 function updatePracticeTimerDisplay(player) {
     const timerDisplay = document.querySelector(`#${player}-player .timer-current`);
     if (timerDisplay && state.activePracticeTimer) {
         const elapsed = Math.floor((Date.now() - state.activePracticeTimer.startTime) / 1000);
         const weekTotal = getWeekPracticeTime(player, state.currentWeek);
         timerDisplay.textContent = formatTime(weekTotal + elapsed);
+
+        // Update sprint countdown for piano
+        if (player === 'piano') {
+            const countdownEl = document.querySelector('.sprint-countdown');
+            if (countdownEl) {
+                const remaining = Math.max(0, SPRINT_DURATION - elapsed);
+                const sprintData = getSprintForWeek(state.activePracticeTimer.week);
+                const sessionsLeft = SPRINT_REWARDS.length - sprintData.sessions;
+                if (remaining > 0 && sessionsLeft > 0) {
+                    countdownEl.innerHTML = `Sprint in: <strong>${formatTime(remaining)}</strong>`;
+                    countdownEl.classList.remove('earned');
+                } else if (remaining <= 0 && sessionsLeft > 0) {
+                    countdownEl.innerHTML = 'Sprint earned! Stop timer to claim.';
+                    countdownEl.classList.add('earned');
+                }
+            }
+        }
     }
 }
 
@@ -974,6 +1055,63 @@ function renderWeekContent(player) {
         `;
     }
 
+    // Sprint bonus section for piano
+    let sprintBonusSection = '';
+    if (player === 'piano') {
+        const sprint = getSprintForWeek(weekNum);
+        const sessionsLeft = SPRINT_REWARDS.length - sprint.sessions;
+        const nextReward = sessionsLeft > 0 ? SPRINT_REWARDS[sprint.sessions] : 0;
+        const isTimerRunning = state.activePracticeTimer?.player === 'piano';
+        let countdownHtml = '';
+        if (isTimerRunning) {
+            const elapsed = Math.floor((Date.now() - state.activePracticeTimer.startTime) / 1000);
+            const remaining = Math.max(0, SPRINT_DURATION - elapsed);
+            if (remaining > 0 && sessionsLeft > 0) {
+                countdownHtml = `<div class="sprint-countdown">Sprint in: <strong>${formatTime(remaining)}</strong></div>`;
+            } else if (remaining <= 0 && sessionsLeft > 0) {
+                countdownHtml = `<div class="sprint-countdown earned">Sprint earned! Stop timer to claim.</div>`;
+            }
+        }
+        sprintBonusSection = `
+            <div class="sprint-bonus-section">
+                <div class="sprint-header">
+                    <span class="sprint-label">Sprint Bonus</span>
+                    <span class="sprint-status">${sessionsLeft > 0 ? `Next: +${nextReward} min screen time` : 'All done today!'}</span>
+                </div>
+                <div class="sprint-dots">
+                    ${SPRINT_REWARDS.map((pts, i) => `
+                        <div class="sprint-dot ${i < sprint.sessions ? 'earned' : ''}">
+                            <span class="sprint-dot-value">${pts}</span>
+                            <span class="sprint-dot-unit">min</span>
+                        </div>
+                    `).join('')}
+                </div>
+                ${countdownHtml}
+                <div class="sprint-info">Practice 4+ min without stopping to earn screen time!</div>
+            </div>
+        `;
+    }
+
+    // Riff of the chapter section for guitar
+    let riffSection = '';
+    if (player === 'guitar' && data.riff) {
+        const riff = data.riff;
+        riffSection = `
+            <div class="riff-section">
+                <div class="riff-badge">FUN BONUS - No tokens, just glory!</div>
+                <div class="riff-card">
+                    <div class="riff-header">
+                        <span class="riff-label">Riff of the Chapter</span>
+                    </div>
+                    <div class="riff-name">${riff.name}</div>
+                    <div class="riff-artist">by ${riff.artist}</div>
+                    <div class="riff-description">${riff.description}</div>
+                    <div class="riff-tip"><span class="tip-icon">💡</span> ${riff.tip}</div>
+                </div>
+            </div>
+        `;
+    }
+
     // Pattern info for guitar
     let patternSection = '';
     if (player === 'guitar' && pattern) {
@@ -1086,6 +1224,7 @@ function renderWeekContent(player) {
         <p class="week-description">${playerDescription}</p>
         ${weekNotesSection}
         ${practiceTimerSection}
+        ${sprintBonusSection}
         ${metronomeSection}
         <div class="week-items">
             <div class="week-section scale-section">
@@ -1098,6 +1237,7 @@ function renderWeekContent(player) {
                 <div class="chord-list"></div>
             </div>
         </div>
+        ${riffSection}
         ${songsSection}
         ${famousSongsSection}
         ${challengeSection}
